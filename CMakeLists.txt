@@ -100,6 +100,15 @@ else()
 	option(ENABLE_LOBBY "Enable compilation of lobby server" OFF)
 endif()
 
+if(${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
+	set(ENABLE_STATIC_LIBS ON)
+	set(ENABLE_SERVER OFF)
+	set(ENABLE_EDITOR OFF)
+	set(ENABLE_LAUNCHER OFF)
+	set(ENABLE_VIDEO OFF)
+	set(FORCE_BUNDLED_MINIZIP OFF)
+endif ()
+
 # ERM depends on LUA implicitly
 if(ENABLE_ERM AND NOT ENABLE_LUA)
 	set(ENABLE_LUA ON)
@@ -466,9 +475,94 @@ set(BOOST_COMPONENTS date_time filesystem locale program_options system)
 if(ENABLE_INNOEXTRACT)
 	list(APPEND BOOST_COMPONENTS iostreams)
 endif()
-find_package(Boost 1.48.0 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
 
-find_package(ZLIB REQUIRED)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
+	include(ExternalProject)
+	ExternalProject_Add(boost-lib
+			PREFIX "boost"
+			URL "https://github.com/boostorg/boost/releases/download/boost-1.86.0/boost-1.86.0-cmake.zip"
+			BUILD_IN_SOURCE true
+			PATCH_COMMAND find . -name *.sh -execdir chmod u+x {} +
+			CONFIGURE_COMMAND ./bootstrap.sh
+			BUILD_COMMAND ./b2 install
+			--with-date_time
+			--with-filesystem
+			--with-locale
+			--with-program_options
+			--with-system
+			--prefix=${CMAKE_BINARY_DIR}/boost
+			toolset=emscripten
+			link=static
+			runtime-link=static
+			variant=release
+			"-j 1"
+			INSTALL_COMMAND ""
+			INSTALL_DIR ${CMAKE_BINARY_DIR}/boost
+	)
+	ExternalProject_Add(tbb-lib
+			PREFIX "tbb"
+			URL "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.0.0.zip"
+			BUILD_IN_SOURCE true
+			PATCH_COMMAND echo
+			"target_compile_options(tbb PRIVATE \"-fwasm-exceptions\")\\n"
+			"target_compile_options(tbbmalloc PRIVATE \"-fwasm-exceptions\")\\n"
+			"target_link_options(tbb PRIVATE \"-fwasm-exceptions\")\\n"
+			"target_link_options(tbbmalloc PRIVATE \"-fwasm-exceptions\")\\n"
+			>> CMakeLists.txt
+			CONFIGURE_COMMAND "emcmake"
+			"${CMAKE_COMMAND}"
+			"-G${CMAKE_GENERATOR}"
+			"-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}/tbb"
+			"-DCMAKE_BUILD_TYPE=Release"
+			"-DBUILD_SHARED_LIBS=OFF"
+			"-DTBB_BUILD=ON"
+			"-DTBBMALLOC_BUILD=ON"
+			"-DTBB_TEST=OFF"
+			"-DCMAKE_CXX_FLAGS=-fwasm-exceptions"
+			"-DLINK_FLAGS=-fwasm-exceptions"
+			BUILD_COMMAND "${CMAKE_MAKE_PROGRAM}" "tbb" "tbbmalloc"
+			INSTALL_COMMAND "${CMAKE_MAKE_PROGRAM}" "install" "tbb" "tbbmalloc"
+	)
+
+	set(EMSCRIPTEN_LIBS boost_system boost_program_options boost_locale boost_filesystem boost_date_time tbb tbbmalloc)
+
+	link_directories(
+			"${CMAKE_BINARY_DIR}/boost/lib"
+			"${CMAKE_BINARY_DIR}/tbb/lib"
+	)
+	include_directories(
+			"${CMAKE_BINARY_DIR}/boost/include"
+			"${CMAKE_BINARY_DIR}/tbb/include"
+	)
+
+	set(USE_FLAGS " -pthread \
+  --use-port=sdl2 \
+  --use-port=sdl2_image:formats=bmp,png \
+  --use-port=sdl2_mixer -sSDL2_MIXER_FORMATS=mp3,ogg \
+  --use-port=sdl2_ttf \
+  --use-port=zlib \
+  -fwasm-exceptions")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${USE_FLAGS} -Wno-missing-template-arg-list-after-template-kw")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${USE_FLAGS}")
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${USE_FLAGS} \
+  -sALLOW_MEMORY_GROWTH -sINITIAL_MEMORY=512mb -sMEMORY_GROWTH_LINEAR_STEP=32mb \
+  -sSTACK_SIZE=1024kb \
+  -sENVIRONMENT=web,worker \
+  -sPTHREAD_POOL_SIZE=8 \
+  -sPTHREAD_POOL_SIZE_STRICT=0 \
+  -sMALLOC=mimalloc \
+  -sMODULARIZE=1 \
+  -sCASE_INSENSITIVE_FS \
+  -sEXPORTED_RUNTIME_METHODS=callMain,addRunDependency,removeRunDependency \
+  -sEXPORT_ALL \
+  -sEXIT_RUNTIME \
+  -lidbfs.js")
+
+else()
+	find_package(ZLIB REQUIRED)
+	find_package(Boost 1.48.0 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
+endif ()
+
 # Conan compatibility
 if(TARGET zlib::zlib)
 	add_library(ZLIB::ZLIB ALIAS zlib::zlib)
@@ -484,32 +578,34 @@ endif()
 
 
 if (ENABLE_CLIENT)
-	if (ENABLE_VIDEO)
-		find_package(ffmpeg REQUIRED COMPONENTS avutil swscale avformat avcodec swresample)
-	endif()
+	if(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")# sdl configuration made using --use-port options, video for emcc is off be default
+		if (ENABLE_VIDEO)
+			find_package(ffmpeg REQUIRED COMPONENTS avutil swscale avformat avcodec swresample)
+		endif()
 
-	find_package(SDL2 REQUIRED)
-	find_package(SDL2_image REQUIRED)
-	if(TARGET SDL2_image::SDL2_image)
-		add_library(SDL2::Image ALIAS SDL2_image::SDL2_image)
-	endif()
-	if(TARGET SDL2_image::SDL2_image-static)
-		add_library(SDL2::Image ALIAS SDL2_image::SDL2_image-static)
-	endif()
-	find_package(SDL2_mixer REQUIRED)
-	if(TARGET SDL2_mixer::SDL2_mixer)
-		add_library(SDL2::Mixer ALIAS SDL2_mixer::SDL2_mixer)
-	endif()
-	if(TARGET SDL2_mixer::SDL2_mixer-static)
-		add_library(SDL2::Mixer ALIAS SDL2_mixer::SDL2_mixer-static)
-	endif()
-	find_package(SDL2_ttf REQUIRED)
-	if(TARGET SDL2_ttf::SDL2_ttf)
-		add_library(SDL2::TTF ALIAS SDL2_ttf::SDL2_ttf)
-	endif()
-	if(TARGET SDL2_ttf::SDL2_ttf-static)
-		add_library(SDL2::TTF ALIAS SDL2_ttf::SDL2_ttf-static)
-	endif()
+		find_package(SDL2 REQUIRED)
+		find_package(SDL2_image REQUIRED)
+		if(TARGET SDL2_image::SDL2_image)
+			add_library(SDL2::Image ALIAS SDL2_image::SDL2_image)
+		endif()
+		if(TARGET SDL2_image::SDL2_image-static)
+			add_library(SDL2::Image ALIAS SDL2_image::SDL2_image-static)
+		endif()
+		find_package(SDL2_mixer REQUIRED)
+		if(TARGET SDL2_mixer::SDL2_mixer)
+			add_library(SDL2::Mixer ALIAS SDL2_mixer::SDL2_mixer)
+		endif()
+		if(TARGET SDL2_mixer::SDL2_mixer-static)
+			add_library(SDL2::Mixer ALIAS SDL2_mixer::SDL2_mixer-static)
+		endif()
+		find_package(SDL2_ttf REQUIRED)
+		if(TARGET SDL2_ttf::SDL2_ttf)
+			add_library(SDL2::TTF ALIAS SDL2_ttf::SDL2_ttf)
+		endif()
+		if(TARGET SDL2_ttf::SDL2_ttf-static)
+			add_library(SDL2::TTF ALIAS SDL2_ttf::SDL2_ttf-static)
+		endif()
+	endif ()
 endif()
 
 if(ENABLE_LOBBY)
@@ -528,7 +624,9 @@ if(ENABLE_LAUNCHER OR ENABLE_EDITOR)
 endif()
 
 if(NOT ENABLE_MINIMAL_LIB)
-	find_package(TBB REQUIRED)
+	if (NOT ${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
+		find_package(TBB REQUIRED)
+	endif ()
 endif()
 
 if(ENABLE_LUA)

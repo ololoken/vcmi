@@ -56,6 +56,10 @@
 #undef main
 #endif
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 namespace po = boost::program_options;
 namespace po_style = boost::program_options::command_line_style;
 
@@ -113,6 +117,11 @@ static void prog_help(const po::options_description &opts)
 	printf("warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n");
 	printf("\n");
 	std::cout << opts;
+}
+
+void MainLoopCallback()
+{
+  ENGINE->mainLoop();
 }
 
 #if defined(VCMI_WINDOWS) && !defined(__GNUC__) && defined(VCMI_WITH_DEBUG_CONSOLE)
@@ -382,7 +391,14 @@ int main(int argc, char * argv[])
 		if (ENGINE)
 		{
 			checkForModLoadingFailure();
-			ENGINE->mainLoop();
+#ifdef __EMSCRIPTEN__
+			emscripten_set_main_loop(&MainLoopCallback, 0, true);
+#else
+			for(;;)
+			{
+				MainLoopCallback()
+			}
+#endif
 		}
 		else
 		{
@@ -435,6 +451,11 @@ int main(int argc, char * argv[])
 /// TODO: decide on better location for this method
 void handleFatalError(const std::string & message, bool terminate)
 {
+#ifdef __EMSCRIPTEN__
+	EM_ASM({
+		console.error(`FATAL ERROR: ${UTF8ToString($0)}`);
+	}, message.c_str());
+#endif
 	logGlobal->error("FATAL ERROR ENCOUNTERED, VCMI WILL NOW TERMINATE");
 	logGlobal->error("Reason: %s", message);
 

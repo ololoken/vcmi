@@ -473,9 +473,13 @@ endif()
 
 target_link_libraries(vcmiclientcommon PRIVATE vcmiservercommon)
 
-target_link_libraries(vcmiclientcommon PUBLIC
-		vcmi SDL2::SDL2 SDL2::Image SDL2::Mixer SDL2::TTF
-)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
+target_link_libraries(vcmiclientcommon PUBLIC vcmi)
+else()
+	target_link_libraries(vcmiclientcommon PUBLIC
+			vcmi SDL2::SDL2 SDL2::Image SDL2::Mixer SDL2::TTF
+	)
+endif ()
 
 if(ENABLE_VIDEO)
 	target_compile_definitions(vcmiclientcommon PRIVATE ENABLE_VIDEO)
