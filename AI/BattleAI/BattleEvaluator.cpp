@@ -13,7 +13,7 @@
 
 #include "StackWithBonuses.h"
 #include "EnemyInfo.h"
-#include "../../lib/parallel_for.h"
+#include "tbb/parallel_for.h"
 #include "../../lib/CStopWatch.h"
 #include "../../lib/CThreadHelper.h"
 #include "../../lib/battle/CPlayerBattleCallback.h"
@@ -674,9 +674,9 @@ bool BattleEvaluator::attemptCastingSpell(const CStack * activeStack)
 	CStopWatch timer;
 
 #if BATTLE_TRACE_LEVEL >= 1
-	vcmi::blocked_range<size_t> r(0, possibleCasts.size());
+	tbb::blocked_range<size_t> r(0, possibleCasts.size());
 #else
-	vcmi::parallel_for(vcmi::blocked_range<size_t>(0, possibleCasts.size()), [&](const vcmi::blocked_range<size_t> & r)
+	tbb::parallel_for(tbb::blocked_range<size_t>(0, possibleCasts.size()), [&](const tbb::blocked_range<size_t> & r)
 		{
 #endif
 			for(auto i = r.begin(); i != r.end(); i++)
