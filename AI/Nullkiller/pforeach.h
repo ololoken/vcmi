@@ -30,7 +30,7 @@ void pforeachTilePaths(const int3 & mapSize, const Nullkiller * ai, TFunc fn)
 {
 	for(int z = 0; z < mapSize.z; ++z)
 	{
-		tbb::parallel_for(tbb::blocked_range<size_t>(0, mapSize.x), [&](const tbb::blocked_range<size_t> & r)
+		vcmi::parallel_for(vcmi::blocked_range<size_t>(0, mapSize.x), [&](const vcmi::blocked_range<size_t> & r)
 			{
 				int3 pos(0, 0, z);
 				std::vector<AIPath> paths;

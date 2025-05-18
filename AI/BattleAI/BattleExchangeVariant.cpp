@@ -13,7 +13,7 @@
 #include "../../lib/CStack.h"
 #include "../../lib/GameLibrary.h"
 
-#include <tbb/parallel_for.h>
+#include "../../lib/parallel_for.h"
 
 AttackerValue::AttackerValue()
 	: value(0),

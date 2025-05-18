@@ -20,10 +20,9 @@
 #include "../GameEngine.h"
 #include "../render/IScreenHandler.h"
 
+#include "../../lib/parallel_for.h"
 #include "../../lib/AsyncRunner.h"
 #include "../../lib/CConfigHandler.h"
-
-#include <tbb/parallel_for.h>
 
 #include <SDL_image.h>
 #include <SDL_surface.h>

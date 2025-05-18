@@ -20,9 +20,8 @@
 #include "../CMT.h"
 #include "../xBRZ/xbrz.h"
 
+#include "../../lib/parallel_for.h"
 #include "../../lib/GameConstants.h"
-
-#include <tbb/parallel_for.h>
 
 #include <SDL_render.h>
 #include <SDL_surface.h>
