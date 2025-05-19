@@ -534,7 +534,14 @@ void CMultiMode::hostTCP(EShortcut shortcut)
 {
 	auto savedScreenType = screenType;
 	close();
-	GH.windows().createAndPushWindow<CMultiPlayers>(getPlayersNames(), savedScreenType, true, ELoadMode::MULTI, shortcut);
+	if (shortcut != EShortcut::MAIN_MENU_HOTSEAT)
+	{
+		GH.windows().createAndPushWindow<CMultiPlayers>(getPlayersNames(), savedScreenType, true, ELoadMode::MULTI, shortcut);
+	}
+	else
+	{
+		GH.windows().createAndPushWindow<CMultiPlayers>(getPlayersNames(), savedScreenType, true, ELoadMode::SINGLE, shortcut);
+	}
 }
 
 void CMultiMode::joinTCP(EShortcut shortcut)

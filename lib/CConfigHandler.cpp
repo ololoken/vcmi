@@ -104,13 +104,13 @@ void SettingsStorage::invalidateNode(const std::vector<std::string> &changedPath
 	file << savedConf.toString();
 #ifdef __EMSCRIPTEN__
 	// clang-format off
-	EM_ASM((function debouned () {
-		if (debounced.timeout) clearTimeout(debouned.timeout);
-		debounced.timeout = setTimeout(() => FS.syncfs(err => {
+	EM_ASM(
+		if (Module._debounced_timeout) clearTimeout(Module._debounced_timeout);
+		Module._debounced_timeout = setTimeout(() => FS.syncfs(err => {
 			if (err) console.error("Failed to sync fs", err);
 			return true;
 		}), 40);
-	})());
+	);
 	// clang-format on
 #endif
 }
