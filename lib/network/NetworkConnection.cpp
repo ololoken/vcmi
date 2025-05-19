@@ -17,7 +17,15 @@ NetworkConnection::NetworkConnection(INetworkConnectionListener & listener, cons
 	, timer(std::make_shared<NetworkTimer>(*context))
 	, listener(listener)
 {
-	socket->set_option(boost::asio::ip::tcp::no_delay(true));
+	//wasm throws exception on attempt to set no_delay option
+	try
+	{
+		socket->set_option(boost::asio::ip::tcp::no_delay(true));
+	}
+	catch (const boost::system::system_error & e)
+	{
+		logNetwork->error("error setting 'send buffer size' socket option: %s", e.what());
+	}
 
 	// iOS throws exception on attempt to set buffer size
 	constexpr auto bufferSize = 4 * 1024 * 1024;
