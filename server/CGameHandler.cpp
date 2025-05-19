@@ -88,6 +88,10 @@
 #include <vcmi/events/GenericEvents.h>
 #include <vcmi/events/AdventureEvents.h>
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 #define COMPLAIN_RET_IF(cond, txt) do {if (cond){complain(txt); return;}} while(0)
 #define COMPLAIN_RET_FALSE_IF(cond, txt) do {if (cond){complain(txt); return false;}} while(0)
 #define COMPLAIN_RET(txt) {complain(txt); return false;}
@@ -1542,6 +1546,14 @@ void CGameHandler::save(const std::string & filename)
 			save << *this;
 		}
 		logGlobal->info("Game has been successfully saved!");
+#ifdef __EMSCRIPTEN__
+		// clang-format off
+		EM_ASM(FS.syncfs(err => {
+			if (err) console.error("Failed to sync fs", err);
+			return true;
+		}));
+		// clang-format on
+#endif
 	}
 	catch(std::exception &e)
 	{
