@@ -756,11 +756,15 @@ else()
 	add_library(vcmi SHARED ${lib_SRCS} ${lib_HEADERS})
 endif()
 
-set_target_properties(vcmi PROPERTIES COMPILE_DEFINITIONS "VCMI_DLL=1")
-target_link_libraries(vcmi PUBLIC
-	minizip::minizip ZLIB::ZLIB TBB::tbb
-	${SYSTEM_LIBS} Boost::boost Boost::thread Boost::filesystem Boost::program_options Boost::locale Boost::date_time
-)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
+	target_link_libraries(vcmi PUBLIC ${SYSTEM_LIBS} PRIVATE ${EMSCRIPTEN_LIBS})
+else ()
+	set_target_properties(vcmi PROPERTIES COMPILE_DEFINITIONS "VCMI_DLL=1")
+	target_link_libraries(vcmi PUBLIC
+		minizip::minizip ZLIB::ZLIB TBB::tbb
+		${SYSTEM_LIBS} Boost::boost Boost::thread Boost::filesystem Boost::program_options Boost::locale Boost::date_time
+	)
+endif ()
 
 if(ENABLE_STATIC_LIBS AND ENABLE_CLIENT)
 	target_compile_definitions(vcmi PRIVATE STATIC_AI)

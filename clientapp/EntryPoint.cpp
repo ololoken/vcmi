@@ -61,6 +61,10 @@
 #undef main
 #endif
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 namespace po = boost::program_options;
 namespace po_style = boost::program_options::command_line_style;
 
@@ -412,7 +416,11 @@ int main(int argc, char * argv[])
 	if(!settings["session"]["headless"].Bool())
 	{
 		checkForModLoadingFailure();
+#ifdef __EMSCRIPTEN__
+		emscripten_set_main_loop(&mainLoop, 0, true);
+#else
 		mainLoop();
+#endif
 	}
 	else
 	{
@@ -433,8 +441,9 @@ static void mainLoop()
 	// on Linux, name of main thread is also name of our process. Which we don't want to change
 	setThreadName("MainGUI");
 #endif
-
+#ifndef __EMSCRIPTEN__
 	while(1) //main SDL events loop
+#endif
 	{
 		GH.input().fetchEvents();
 		GH.renderFrame();
