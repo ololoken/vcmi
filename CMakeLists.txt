@@ -491,6 +491,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
 			--with-program_options
 			--with-system
 			--with-thread
+			--with-chrono
 			--prefix=${CMAKE_BINARY_DIR}/boost
 			toolset=emscripten
 			link=static
@@ -525,7 +526,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
 			INSTALL_COMMAND "${CMAKE_MAKE_PROGRAM}" "install" "tbb" "tbbmalloc"
 	)
 
-	set(EMSCRIPTEN_LIBS boost_system boost_program_options boost_locale boost_filesystem boost_date_time boost_thread tbb tbbmalloc)
+	set(EMSCRIPTEN_LIBS boost_system boost_program_options boost_locale boost_filesystem boost_date_time boost_thread boost_chrono tbb tbbmalloc)
 
 	link_directories(
 			"${CMAKE_BINARY_DIR}/boost/lib"
