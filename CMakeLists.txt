@@ -562,7 +562,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
   -sEXPORT_ALL \
   -sEXIT_RUNTIME \
   -sPROXY_POSIX_SOCKETS \
-  -sPROXY_TO_PTHREAD \
+  -sWEBSOCKET_URL=wss://turch.in/wttp \
   -lwebsocket.js \
   -lidbfs.js")
 
