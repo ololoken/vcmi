@@ -556,6 +556,8 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
   -sEXPORTED_RUNTIME_METHODS=callMain,addRunDependency,removeRunDependency \
   -sEXPORT_ALL \
   -sEXIT_RUNTIME \
+  -sPROXY_POSIX_SOCKETS \
+  -lwebsocket.js \
   -lidbfs.js")
 
 else()
