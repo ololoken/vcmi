@@ -109,7 +109,7 @@ void SettingsStorage::invalidateNode(const std::vector<std::string> &changedPath
 		Module._debounced_timeout = setTimeout(() => FS.syncfs(err => {
 			if (err) console.error("Failed to sync fs", err);
 			return true;
-		}), 40);
+		}), 2500);
 	);
 	// clang-format on
 #endif
