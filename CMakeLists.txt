@@ -90,17 +90,7 @@ if(APPLE_IOS OR ANDROID)
 	set(ENABLE_LOBBY OFF)
 	set(ENABLE_SERVER OFF)
 	set(COPY_CONFIG_ON_BUILD OFF)
-else()
-	option(ENABLE_MONOLITHIC_INSTALL "Install everything in single directory on Linux and Mac" OFF) # Used for Snap packages and also useful for debugging
-	option(COPY_CONFIG_ON_BUILD "Copies config folder into output directory at building phase" ON)
-	option(ENABLE_SERVER "Enable compilation of dedicated server" ON)
-	option(ENABLE_EDITOR "Enable compilation of map editor" ON)
-	option(ENABLE_SINGLE_APP_BUILD "Builds client and launcher as single executable" OFF)
-	option(ENABLE_TEST "Enable compilation of unit tests" OFF)
-	option(ENABLE_LOBBY "Enable compilation of lobby server" OFF)
-endif()
-
-if(${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
+elseif(CMAKE_SYSTEM_NAME MATCHES "Emscripten")
 	set(ENABLE_STATIC_LIBS ON)
 	set(ENABLE_LOBBY OFF)
 	set(ENABLE_SERVER OFF)
@@ -110,7 +100,15 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
 	set(FORCE_BUNDLED_MINIZIP OFF)
 	set(ENABLE_SINGLE_APP_BUILD OFF)
 	add_definitions(-DVCMI_NO_THREADED_LOAD)
-endif ()
+else()
+	option(ENABLE_MONOLITHIC_INSTALL "Install everything in single directory on Linux and Mac" OFF) # Used for Snap packages and also useful for debugging
+	option(COPY_CONFIG_ON_BUILD "Copies config folder into output directory at building phase" ON)
+	option(ENABLE_SERVER "Enable compilation of dedicated server" ON)
+	option(ENABLE_EDITOR "Enable compilation of map editor" ON)
+	option(ENABLE_SINGLE_APP_BUILD "Builds client and launcher as single executable" OFF)
+	option(ENABLE_TEST "Enable compilation of unit tests" OFF)
+	option(ENABLE_LOBBY "Enable compilation of lobby server" OFF)
+endif()
 
 # ERM depends on LUA implicitly
 if(ENABLE_ERM AND NOT ENABLE_LUA)
@@ -506,25 +504,21 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
 	)
 	ExternalProject_Add(tbb-lib
 			PREFIX "tbb"
-			URL "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.0.0.zip"
+			URL "https://github.com/uxlfoundation/oneTBB/archive/refs/tags/v2022.3.0.tar.gz"
 			BUILD_IN_SOURCE true
-			PATCH_COMMAND echo
-			"target_compile_options(tbb PRIVATE \"-fwasm-exceptions\")\\n"
-			"target_compile_options(tbbmalloc PRIVATE \"-fwasm-exceptions\")\\n"
-			"target_link_options(tbb PRIVATE \"-fwasm-exceptions\")\\n"
-			"target_link_options(tbbmalloc PRIVATE \"-fwasm-exceptions\")\\n"
-			>> CMakeLists.txt
+			PATCH_COMMAND
 			CONFIGURE_COMMAND "emcmake"
 			"${CMAKE_COMMAND}"
 			"-G${CMAKE_GENERATOR}"
 			"-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}/tbb"
 			"-DCMAKE_BUILD_TYPE=Release"
 			"-DBUILD_SHARED_LIBS=OFF"
+			"-DTBB_STRICT=OFF"
 			"-DTBB_BUILD=ON"
 			"-DTBBMALLOC_BUILD=ON"
 			"-DTBB_TEST=OFF"
-			"-DCMAKE_CXX_FLAGS=-fwasm-exceptions"
-			"-DLINK_FLAGS=-fwasm-exceptions"
+			"-DCMAKE_CXX_FLAGS=-fwasm-exceptions -sDISABLE_EXCEPTION_CATCHING -sSUPPORT_LONGJMP=wasm"
+			"-DLINK_FLAGS=-fwasm-exceptions -sDISABLE_EXCEPTION_CATCHING -sSUPPORT_LONGJMP=wasm"
 			BUILD_COMMAND "${CMAKE_MAKE_PROGRAM}" "tbb" "tbbmalloc"
 			INSTALL_COMMAND "${CMAKE_MAKE_PROGRAM}" "install" "tbb" "tbbmalloc"
 	)
