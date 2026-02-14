@@ -157,7 +157,7 @@ else()
 endif()
 
 target_include_directories(Nullkiller PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-if (${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
+if (EMSCRIPTEN)
 	target_link_libraries(Nullkiller PUBLIC vcmi fuzzylite::fuzzylite)
 else ()
 	target_link_libraries(Nullkiller PUBLIC vcmi fuzzylite::fuzzylite TBB::tbb)

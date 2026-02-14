@@ -15,6 +15,7 @@
 
 #include "../CCreatureHandler.h"
 
+#include "../bonuses/BonusParameters.h"
 #include "../serializer/JsonDeserializer.h"
 #include "../serializer/JsonSerializer.h"
 
@@ -116,7 +117,7 @@ CCasts::CCasts(const battle::Unit * Owner):
 CRetaliations::CRetaliations(const battle::Unit * Owner)
 	: CAmmo(Owner, Selector::type()(BonusType::ADDITIONAL_RETALIATION)),
 	totalCache(0),
-	noRetaliation(Owner, Selector::type()(BonusType::SIEGE_WEAPON).Or(Selector::type()(BonusType::HYPNOTIZED)).Or(Selector::type()(BonusType::NO_RETALIATION))),
+	noRetaliation(Owner, Selector::type()(BonusType::SIEGE_WEAPON).Or(Selector::type()(BonusType::NO_RETALIATION))),
 	unlimited(Owner, Selector::type()(BonusType::UNLIMITED_RETALIATIONS))
 {
 }
@@ -453,6 +454,11 @@ int64_t CUnitState::getEffectValue(const spells::Spell * spell) const
 	return static_cast<int64_t>(getCount()) * valOfBonuses(BonusType::SPECIFIC_SPELL_POWER, BonusSubtypeID(spell->getId()));
 }
 
+int64_t CUnitState::getEffectRange(const spells::Spell * spell) const
+{
+	return valOfBonuses(BonusType::SPECIFIC_SPELL_RANGE, BonusSubtypeID(spell->getId()));
+}
+
 PlayerColor CUnitState::getCasterOwner() const
 {
 	return env->unitEffectiveOwner(this);
@@ -495,7 +501,7 @@ bool CUnitState::isGhost() const
 
 bool CUnitState::isFrozen() const
 {
-	return hasBonus(Selector::source(BonusSource::SPELL_EFFECT, BonusSourceID(SpellID(SpellID::STONE_GAZE))), Selector::all);
+	return hasBonus(Selector::source(BonusSource::SPELL_EFFECT, BonusSourceID(SpellID(SpellID::STONE_GAZE))));
 }
 
 bool CUnitState::isValidTarget(bool allowDead) const
@@ -609,8 +615,8 @@ uint8_t CUnitState::getRangedFullDamageDistance() const
 	if(hasBonusOfType(BonusType::LIMITED_SHOOTING_RANGE))
 	{
 		auto bonus = this->getBonus(Selector::type()(BonusType::LIMITED_SHOOTING_RANGE));
-		if(bonus != nullptr && bonus->additionalInfo != CAddInfo::NONE)
-			return bonus->additionalInfo[0];
+		if(bonus != nullptr && bonus->parameters)
+			return bonus->parameters->toNumber();
 	}
 
 	if (hasBonusOfType(BonusType::NO_DISTANCE_PENALTY))
@@ -916,18 +922,18 @@ void CUnitState::afterNewRound()
 	drainedMana = false;
 	counterAttacks.reset();
 
-	if(alive() && isClone())
-	{
-		if(!bonusCache.hasBonus(UnitBonusValuesProxy::CLONE_MARKER))
-			makeGhost();
-	}
+	if(alive() && isClone() && !bonusCache.hasBonus(UnitBonusValuesProxy::CLONE_MARKER))
+		makeGhost();
 }
 
-void CUnitState::afterGetsTurn()
+void CUnitState::afterGetsTurn(BattleUnitTurnReason reason)
 {
-	//if moving second time this round it must be high morale bonus
-	if(movedThisRound)
+	if(reason == BattleUnitTurnReason::MORALE)
+	{
 		hadMorale = true;
+		castSpellThisTurn = false;
+		movedThisRound = false;
+	}
 }
 
 void CUnitState::makeGhost()
@@ -949,9 +955,9 @@ CUnitStateDetached::CUnitStateDetached(const IUnitInfo * unit_, const IBonusBear
 {
 }
 
-TConstBonusListPtr CUnitStateDetached::getAllBonuses(const CSelector & selector, const CSelector & limit, const std::string & cachingStr) const
+TConstBonusListPtr CUnitStateDetached::getAllBonuses(const CSelector & selector, const std::string & cachingStr) const
 {
-	return bonus->getAllBonuses(selector, limit, cachingStr);
+	return bonus->getAllBonuses(selector, cachingStr);
 }
 
 int32_t CUnitStateDetached::getTreeVersion() const

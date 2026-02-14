@@ -3,7 +3,7 @@
 {
 	"type" : "object",
 	"$schema" : "http://json-schema.org/draft-04/schema",
-	"required" : [ "general", "video", "adventure", "battle", "input", "server", "logging", "launcher", "lobby", "gameTweaks", "mods" ],
+	"required" : [ "general", "video", "adventure", "battle", "input", "server", "logging", "launcher", "lobby", "gameTweaks", "mods", "ai" ],
 	"definitions" : {
 		"logLevelEnum" : {
 			"type" : "string",
@@ -40,11 +40,17 @@
 				"autosaveCountLimit",
 				"useSavePrefix",
 				"savePrefix",
+				"saveBeforeVisit",
 				"startTurnAutosave",
 				"enableUiEnhancements",
 				"audioMuteFocus",
 				"enableOverlay",
-				"lastKindomInterface"
+				"lastKindomInterface",
+				"enableSubtitle",
+				"ignoreMuteSwitch",
+				"highscoreEntriesCap",
+				"highscoreStatisticEntriesCap",
+				"enableDiscordRichPresence"
 			],
 			"properties" : {
 				"playerName" : {
@@ -73,12 +79,12 @@
 				},
 				"language" : {
 					"type" : "string",
-					"enum" : [ "english", "czech", "chinese", "finnish", "french", "german", "hungarian", "italian", "korean", "polish", "portuguese", "russian", "spanish", "swedish", "turkish", "ukrainian", "vietnamese" ],
+					"enum" : [ "english", "belarusian", "bulgarian", "czech", "chinese", "dutch", "filipino", "finnish", "french", "german", "greek", "hungarian", "italian", "japanese", "korean", "latvian", "norwegian", "polish", "portuguese", "romanian", "russian", "serbian", "spanish", "swedish", "turkish", "ukrainian", "vietnamese" ],
 					"default" : "english"
 				},
 				"gameDataLanguage" : {
 					"type" : "string",
-					"enum" : [ "auto", "english", "czech", "chinese", "finnish", "french", "german", "hungarian", "italian", "korean", "polish", "portuguese", "russian", "spanish", "swedish", "turkish", "ukrainian", "vietnamese" ],
+					"enum" : [ "auto", "english", "belarusian", "bulgarian", "czech", "chinese", "dutch", "filipino", "finnish", "french", "german", "greek", "hungarian", "italian", "japanese", "korean", "latvian", "norwegian", "polish", "portuguese", "romanian", "russian", "serbian", "spanish", "swedish", "turkish", "ukrainian", "vietnamese" ],
 					"default" : "auto"
 				},
 				"lastSave" : {
@@ -106,6 +112,10 @@
 					"default" : false
 				},
 				"extraDump" : {
+					"type" : "boolean",
+					"default" : false
+				},
+				"saveBeforeVisit" : {
 					"type" : "boolean",
 					"default" : false
 				},
@@ -156,6 +166,26 @@
 				"lastKindomInterface" : {
 					"type" : "number",
 					"default" : 0
+				},
+				"enableSubtitle" : {
+					"type": "boolean",
+					"default": true
+				},
+				"ignoreMuteSwitch" : {
+					"type": "boolean",
+					"default": true
+				},
+				"highscoreEntriesCap" : {
+					"type" : "number",
+					"default" : 100
+				},
+				"highscoreStatisticEntriesCap" : {
+					"type" : "number",
+					"default" : 15
+				},
+				"enableDiscordRichPresence" : {
+					"type" : "boolean",
+					"default" : true
 				}
 			}
 		},
@@ -190,7 +220,7 @@
 				"spellbookAnimation",
 				"driver",
 				"displayIndex",
-				"showfps",
+				"performanceOverlay",
 				"targetfps",
 				"vsync",
 				"fontsType",
@@ -200,7 +230,8 @@
 				"fontUpscalingFilter",
 				"downscalingFilter",
 				"allowPortrait",
-				"asyncUpscaling"
+				"asyncUpscaling",
+				"useHdTextures"
 			],
 			"properties" : {
 				"resolution" : {
@@ -215,7 +246,6 @@
 				},
 				"reservedWidth" : {
 					"type" : "number",
-					"defaultIOS" : 0.1, // iOS camera cutout / notch is not excluded from available area by SDL, handle it this way
 					"default" : 0
 				},
 				"fullscreen" : {
@@ -249,9 +279,16 @@
 					"type" : "number",
 					"default" : 0
 				},
-				"showfps" : {
-					"type" : "boolean",
-					"default" : false
+				"performanceOverlay" : {
+					"type" : "object",
+					"additionalProperties" : false,
+					"required" : [ "show", "edge", "marginTopBottom", "marginLeftRight" ],
+					"properties" : {
+						"show" : { "type" : "boolean", "default" : false },
+						"edge" : { "type" : "string",  "enum" : [ "topleft", "topright", "bottomleft", "bottomright" ], "default" : "bottomleft" },
+						"marginTopBottom" : { "type" : "number",  "default" : 5 },
+						"marginLeftRight" : { "type" : "number",  "default" : 7 }
+					}
 				},
 				"targetfps" : {
 					"type" : "number",
@@ -294,6 +331,10 @@
 					"default" : false
 				},
 				"asyncUpscaling" : {
+					"type" : "boolean",
+					"default" : true
+				},
+				"useHdTextures" : {
 					"type" : "boolean",
 					"default" : true
 				}
@@ -377,7 +418,7 @@
 			"type" : "object",
 			"additionalProperties" : false,
 			"default" : {},
-			"required" : [ "heroMoveTime", "enemyMoveTime", "scrollSpeedPixels", "heroReminder", "quickCombat", "objectAnimation", "terrainAnimation", "forceQuickCombat", "borderScroll", "leftButtonDrag", "rightButtonDrag", "smoothDragging", "backgroundDimLevel", "hideBackground", "backgroundDimSmallWindows", "tileZoom" ],
+			"required" : [ "heroMoveTime", "enemyMoveTime", "scrollSpeedPixels", "heroReminder", "quickCombat", "objectAnimation", "terrainAnimation", "forceQuickCombat", "borderScroll", "leftButtonDrag", "rightButtonDrag", "smoothDragging", "backgroundDimLevel", "hideBackground", "backgroundDimSmallWindows", "tileZoom", "minimapShowHeroes", "showMovePath" ],
 			"properties" : {
 				"heroMoveTime" : {
 					"type" : "number",
@@ -442,9 +483,17 @@
 					"type" : "boolean",
 					"default" : false
 				},
+				"minimapShowHeroes" : {
+					"type" : "boolean",
+					"default" : true
+				},
 				"tileZoom" : {
 					"type" : "number",
 					"default" : 32
+				},
+				"showMovePath" : {
+					"type" : "boolean",
+					"default" : true
 				}
 			}
 		},
@@ -525,7 +574,7 @@
 			"type" : "object",
 			"additionalProperties" : false,
 			"default" : {},
-			"required" : [ "localHostname", "localPort", "remoteHostname", "remotePort", "seed", "playerAI", "alliedAI", "friendlyAI", "neutralAI", "enemyAI" ],
+			"required" : [ "localHostname", "localPort", "remoteHostname", "remotePort", "seed"],
 			"properties" : {
 				"localHostname" : {
 					"type" : "string",
@@ -546,25 +595,38 @@
 				"seed" : {
 					"type" : "number",
 					"default" : 0
-				},
-				"playerAI" : {
+				}
+			}
+		},
+		"ai" : {
+			"type" : "object",
+			"additionalProperties" : false,
+			"default" : {},
+			"required" : [ "adventureAlliedAI", "adventureEnemyAI", "combatEnemyAI", "combatAlliedAI", "combatNeutralAI" ],
+			"properties" : {
+				"adventureAlliedAI" : {
 					"type" : "string",
-					"default" : "Nullkiller"
+					"enum" : [ "EmptyAI", "Nullkiller", "Nullkiller2" ],
+					"default" : "Nullkiller2"
 				},
-				"alliedAI" : {
+				"adventureEnemyAI" : {
 					"type" : "string",
-					"default" : "Nullkiller"
+					"enum" : [ "EmptyAI", "Nullkiller", "Nullkiller2" ],
+					"default" : "Nullkiller2"
 				},
-				"friendlyAI" : {
+				"combatEnemyAI" : {
 					"type" : "string",
+					"enum" : [ "EmptyAI", "StupidAI", "BattleAI", "MMAI" ],
 					"default" : "BattleAI"
 				},
-				"neutralAI" : {
+				"combatAlliedAI" : {
 					"type" : "string",
+					"enum" : [ "EmptyAI", "StupidAI", "BattleAI", "MMAI" ],
 					"default" : "BattleAI"
 				},
-				"enemyAI" : {
+				"combatNeutralAI" : {
 					"type" : "string",
+					"enum" : [ "EmptyAI", "StupidAI", "BattleAI", "MMAI" ],
 					"default" : "BattleAI"
 				}
 			}
@@ -662,19 +724,19 @@
 			"properties" : {
 				"defaultRepositoryEnabled" : {
 					"type" : "boolean",
-					"default" : true,
+					"default" : true
 				},
 				"defaultRepositoryURL" : {
 					"type" : "string",
-					"default" : "https://raw.githubusercontent.com/vcmi/vcmi-mods-repository/develop/vcmi-1.6.json",
+					"default" : "https://raw.githubusercontent.com/vcmi/vcmi-mods-repository/develop/vcmi-1.7.json"
 				},
 				"extraRepositoryEnabled" : {
 					"type" : "boolean",
-					"default" : false,
+					"default" : false
 				},
 				"extraRepositoryURL" : {
 					"type" : "string",
-					"default" : "",
+					"default" : ""
 				},
 				"setupCompleted" : {
 					"type" : "boolean",
@@ -703,7 +765,7 @@
 					"defaultAndroid": false,
 					"defaultDesktop" : true
 
-				},
+				}
 			}
 		},
 		"lobby" : {

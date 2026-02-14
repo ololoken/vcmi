@@ -16,12 +16,13 @@ class FirstLaunchView;
 }
 
 class CModListView;
+class ProgressOverlay;
 
 class FirstLaunchView : public QWidget
 {
 	Q_OBJECT
 
-	void changeEvent(QEvent *event);
+	void changeEvent(QEvent *event) override;
 	CModListView * getModView();
 
 	void setSetupProgress(int progress);
@@ -43,7 +44,8 @@ class FirstLaunchView : public QWidget
 	QString getHeroesInstallDir();
 	void extractGogData();
 	void extractGogDataAsync(QString filePathBin, QString filePathExe);
-	void copyHeroesData(const QString & path = {}, bool move = false);
+	bool performCopyFlow(const QString& path, ProgressOverlay* overlay, bool removeSource);
+	void copyHeroesData(const QString & path = {}, bool removeSource = false);
 
 	// Tab Mod Preset
 	void modPresetUpdate();
@@ -51,16 +53,25 @@ class FirstLaunchView : public QWidget
 	QString findTranslationModName();
 
 	bool checkCanInstallTranslation();
-	bool checkCanInstallWog();
-	bool checkCanInstallHota();
 	bool checkCanInstallExtras();
+	bool checkCanInstallDemo();
+	bool checkCanInstallHota();
+	bool checkCanInstallWog();
+	bool checkCanInstallTow();
+	bool checkCanInstallFod();
 	bool checkCanInstallMod(const QString & modID);
 
 public:
 	explicit FirstLaunchView(QWidget * parent = nullptr);
+	~FirstLaunchView() override;
 
 	// Tab Heroes III Data
 	bool heroesDataUpdate();
+
+    bool needPostCopyCheckExe;
+    bool needPostCopyCheckBin;
+
+    QString checkFileMagic(const QString &filename, const QString &filter, const QByteArray &magic, const QString &ext, bool &openFailed) const;
 
 public slots:
 
@@ -89,5 +100,5 @@ private slots:
 	void on_pushButtonGithub_clicked();
 
 private:
-	Ui::FirstLaunchView * ui;
+	std::unique_ptr<Ui::FirstLaunchView> ui;
 };

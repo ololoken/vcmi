@@ -23,6 +23,8 @@ set(test_SRCS
 		battle/CUnitStateMagicTest.cpp
 		battle/battle_UnitTest.cpp
 
+		bonus/BonusSystemTest.cpp
+
 		entity/CArtifactTest.cpp
 		entity/CCreatureTest.cpp
 		entity/CFactionTest.cpp
@@ -34,6 +36,7 @@ set(test_SRCS
 		events/EventBusTest.cpp
 
 		game/CGameStateTest.cpp
+		game/HeroRecruitmentTest.cpp
 
 		map/CMapEditManagerTest.cpp
 		map/CMapFormatTest.cpp
@@ -70,9 +73,9 @@ set(test_SRCS
 		spells/targetConditions/ResistanceConditionTest.cpp
  		spells/targetConditions/SpellEffectConditionTest.cpp
  		spells/targetConditions/TargetConditionItemFixture.cpp
-		
+
 		mock/BattleFake.cpp
- 		mock/mock_IGameCallback.cpp
+		mock/mock_IGameEventCallback.cpp
  		mock/mock_MapService.cpp
  		mock/mock_BonusBearer.cpp
 		mock/mock_CPSICallback.cpp
@@ -94,7 +97,7 @@ set(test_HEADERS
 
 		mock/BattleFake.h
 		mock/mock_BonusBearer.h
- 		mock/mock_IGameCallback.h
+		mock/mock_IGameEventCallback.h
  		mock/mock_MapService.h
 		mock/mock_BonusBearer.h
 
@@ -114,8 +117,8 @@ if(ENABLE_LUA)
 	)
 endif()
 
-if(ENABLE_ERM) 
-	list(APPEND test_SRCS 
+if(ENABLE_ERM)
+	list(APPEND test_SRCS
 		erm/ERM_BM.cpp
 		erm/ERM_BU.cpp
 		erm/ERM_FU.cpp
@@ -179,6 +182,9 @@ add_executable(vcmitest ${test_SRCS} ${test_HEADERS} ${mock_HEADERS})
 target_link_libraries(vcmitest PRIVATE gtest gmock vcmi ${SYSTEM_LIBS})
 if(ENABLE_LUA)
 	target_link_libraries(vcmitest PRIVATE vcmiLua)
+endif()
+if(ENABLE_NULLKILLER2_AI)
+	target_link_libraries(vcmitest PUBLIC Nullkiller2)
 endif()
 
 target_include_directories(vcmitest

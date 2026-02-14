@@ -11,25 +11,42 @@
 #include "BattleSiegeController.h"
 
 #include "BattleAnimationClasses.h"
-#include "BattleInterface.h"
-#include "BattleInterfaceClasses.h"
-#include "BattleStacksController.h"
 #include "BattleFieldController.h"
+#include "BattleInterface.h"
 #include "BattleRenderer.h"
+#include "BattleStacksController.h"
 
-#include "../CGameInfo.h"
 #include "../CPlayerInterface.h"
-#include "../gui/CGuiHandler.h"
+#include "../GameEngine.h"
 #include "../media/ISoundPlayer.h"
 #include "../render/Canvas.h"
 #include "../render/IImage.h"
 #include "../render/IRenderHandler.h"
 
-#include "../../CCallback.h"
 #include "../../lib/CStack.h"
+#include "../../lib/battle/CPlayerBattleCallback.h"
 #include "../../lib/entities/building/TownFortifications.h"
+#include "../../lib/mapping/CMapHeader.h"
 #include "../../lib/mapObjects/CGTownInstance.h"
 #include "../../lib/networkPacks/PacksForClientBattle.h"
+#include "../../lib/callback/CCallback.h"
+
+const std::string & BattleSiegeController::getSiegePrefix() const
+{
+	const auto & siegePrefixes = town->getTown()->clientInfo.siegePrefix;
+	const auto & currentLayer = owner.curInt->cb->getMapHeader()->mapLayers.at(town->pos.z);
+	if(siegePrefixes.count(currentLayer))
+		return siegePrefixes.at(currentLayer);
+	else
+	{
+		logGlobal->warn("No siege prefix for town %s for layer %s found, fallback", town->getObjectName(), MapLayerId::encode(currentLayer));
+		if(siegePrefixes.count(MapLayerId::UNKNOWN))
+			return siegePrefixes.at(MapLayerId::UNKNOWN);
+		if(siegePrefixes.count(MapLayerId::SURFACE))
+			return siegePrefixes.at(MapLayerId::SURFACE);
+		return siegePrefixes.begin()->second;
+	}
+}
 
 ImagePath BattleSiegeController::getWallPieceImageName(EWallVisual::EWallVisual what, EWallState state) const
 {
@@ -58,7 +75,7 @@ ImagePath BattleSiegeController::getWallPieceImageName(EWallVisual::EWallVisual 
 		};
 	};
 
-	const std::string & prefix = town->getTown()->clientInfo.siegePrefix;
+	const std::string & prefix = getSiegePrefix();
 	std::string addit = std::to_string(getImageIndex());
 
 	switch(what)
@@ -120,7 +137,7 @@ void BattleSiegeController::showWallPiece(Canvas & canvas, EWallVisual::EWallVis
 
 ImagePath BattleSiegeController::getBattleBackgroundName() const
 {
-	const std::string & prefix = town->getTown()->clientInfo.siegePrefix;
+	const std::string & prefix = getSiegePrefix();
 	return ImagePath::builtinTODO(prefix + "BACK.BMP");
 }
 
@@ -179,7 +196,7 @@ BattleSiegeController::BattleSiegeController(BattleInterface & owner, const CGTo
 		if ( !getWallPieceExistence(EWallVisual::EWallVisual(g)) )
 			continue;
 
-		wallPieceImages[g] = GH.renderHandler().loadImage(getWallPieceImageName(EWallVisual::EWallVisual(g), EWallState::REINFORCED), EImageBlitMode::COLORKEY);
+		wallPieceImages[g] = ENGINE->renderHandler().loadImage(getWallPieceImageName(EWallVisual::EWallVisual(g), EWallState::REINFORCED), EImageBlitMode::COLORKEY);
 	}
 }
 
@@ -255,10 +272,10 @@ void BattleSiegeController::gateStateChanged(const EGateState state)
 		wallPieceImages[EWallVisual::GATE] = nullptr;
 
 	if (stateId != EWallState::NONE)
-		wallPieceImages[EWallVisual::GATE] = GH.renderHandler().loadImage(getWallPieceImageName(EWallVisual::GATE,  stateId), EImageBlitMode::COLORKEY);
+		wallPieceImages[EWallVisual::GATE] = ENGINE->renderHandler().loadImage(getWallPieceImageName(EWallVisual::GATE,  stateId), EImageBlitMode::COLORKEY);
 
 	if (playSound)
-		CCS->soundh->playSound(soundBase::DRAWBRG);
+		ENGINE->sound().playSound(soundBase::DRAWBRG);
 }
 
 void BattleSiegeController::showAbsoluteObstacles(Canvas & canvas)
@@ -349,7 +366,7 @@ void BattleSiegeController::stackIsCatapulting(const CatapultAttack & ca)
 		for (auto attackInfo : ca.attackedParts)
 			positions.push_back(owner.stacksController->getStackPositionAtHex(attackInfo.destinationTile, nullptr) + Point(99, 120));
 
-		CCS->soundh->playSound( AudioPath::builtin("WALLHIT") );
+		ENGINE->sound().playSound( AudioPath::builtin("WALLHIT") );
 		owner.stacksController->addNewAnim(new EffectAnimation(owner, AnimationPath::builtin("SGEXPL.DEF"), positions));
 	}
 
@@ -364,7 +381,7 @@ void BattleSiegeController::stackIsCatapulting(const CatapultAttack & ca)
 
 		auto wallState = EWallState(owner.getBattle()->battleGetWallState(attackInfo.attackedPart));
 
-		wallPieceImages[wallId] = GH.renderHandler().loadImage(getWallPieceImageName(EWallVisual::EWallVisual(wallId), wallState), EImageBlitMode::COLORKEY);
+		wallPieceImages[wallId] = ENGINE->renderHandler().loadImage(getWallPieceImageName(EWallVisual::EWallVisual(wallId), wallState), EImageBlitMode::COLORKEY);
 	}
 }
 

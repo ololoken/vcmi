@@ -13,11 +13,12 @@
 
 #include "../lobby/SelectionTab.h"
 
-#include "../gui/CGuiHandler.h"
+#include "../GameEngine.h"
 #include "../gui/WindowHandler.h"
 #include "../widgets/CComponent.h"
 #include "../widgets/MiscWidgets.h"
 #include "../widgets/TextControls.h"
+#include "../widgets/Slider.h"
 #include "../windows/GUIClasses.h"
 #include "../windows/InfoWindows.h"
 #include "../render/CanvasImage.h"
@@ -34,8 +35,9 @@
 #include "../../lib/mapping/MapFormat.h"
 #include "../../lib/TerrainHandler.h"
 #include "../../lib/filesystem/Filesystem.h"
-
+#include "../../lib/callback/EditorCallback.h"
 #include "../../lib/StartInfo.h"
+#include "../../lib/mapObjects/CGHeroInstance.h"
 #include "../../lib/rmg/CMapGenOptions.h"
 #include "../../lib/serializer/CLoadFile.h"
 #include "../../lib/texts/CGeneralTextHandler.h"
@@ -51,7 +53,7 @@ CMapOverview::CMapOverview(const std::string & mapName, const std::string & file
 
 	updateShadow();
 
-	center(GH.getCursorPosition()); //center on mouse
+	center(ENGINE->getCursorPosition()); //center on mouse
 #ifdef VCMI_MOBILE
 	moveBy({0, -pos.h / 2});
 #endif
@@ -60,7 +62,7 @@ CMapOverview::CMapOverview(const std::string & mapName, const std::string & file
 
 std::shared_ptr<CanvasImage> CMapOverviewWidget::createMinimapForLayer(std::unique_ptr<CMap> & map, int layer) const
 {
-	auto canvasImage = GH.renderHandler().createImage(Point(map->width, map->height), CanvasScalingPolicy::IGNORE);
+	auto canvasImage = ENGINE->renderHandler().createImage(Point(map->width, map->height), CanvasScalingPolicy::IGNORE);
 	auto canvas = canvasImage->getCanvas();
 
 	for (int y = 0; y < map->height; ++y)
@@ -74,9 +76,10 @@ std::shared_ptr<CanvasImage> CMapOverviewWidget::createMinimapForLayer(std::uniq
 
 			if(drawPlayerElements)
 				// if object at tile is owned - it will be colored as its owner
-				for (const CGObjectInstance *obj : tile.blockingObjects)
+				for (ObjectInstanceID objectID : tile.blockingObjects)
 				{
-					PlayerColor player = obj->getOwner();
+					const auto * object = map->getObject(objectID);
+					PlayerColor player = object->getOwner();
 					if(player == PlayerColor::NEUTRAL)
 					{
 						color = graphics->neutralColor;
@@ -95,7 +98,7 @@ std::shared_ptr<CanvasImage> CMapOverviewWidget::createMinimapForLayer(std::uniq
 	return canvasImage;
 }
 
-std::vector<std::shared_ptr<CanvasImage>> CMapOverviewWidget::createMinimaps(ResourcePath resource) const
+std::vector<std::shared_ptr<CanvasImage>> CMapOverviewWidget::createMinimaps(const ResourcePath & resource) const
 {
 	std::vector<std::shared_ptr<CanvasImage>> ret;
 
@@ -103,7 +106,8 @@ std::vector<std::shared_ptr<CanvasImage>> CMapOverviewWidget::createMinimaps(Res
 	std::unique_ptr<CMap> map;
 	try
 	{
-		map = mapService.loadMap(resource, nullptr);
+		auto cb = std::make_unique<EditorCallback>(map.get());
+		map = mapService.loadMap(resource, cb.get());
 	}
 	catch (const std::exception & e)
 	{
@@ -118,10 +122,24 @@ std::vector<std::shared_ptr<CanvasImage>> CMapOverviewWidget::createMinimaps(std
 {
 	std::vector<std::shared_ptr<CanvasImage>> ret;
 
-	for(int i = 0; i < (map->twoLevel ? 2 : 1); i++)
+	for(int i = 0; i < map->levels(); i++)
 		ret.push_back(createMinimapForLayer(map, i));
 
 	return ret;
+}
+
+void CMapOverviewWidget::resizeMinimaps(int size) const
+{
+	for(auto & minimap : minimaps)
+	{
+		Point minimapRect = minimap->dimensions();
+		double maxSideLengthSrc = std::max(minimapRect.x, minimapRect.y);
+		double maxSideLengthDst = size;
+		double resize = maxSideLengthSrc / maxSideLengthDst;
+		Point newMinimapSize(minimapRect.x / resize, minimapRect.y / resize);
+
+		minimap->scaleTo(newMinimapSize, EScalingAlgorithm::NEAREST); // for sharp-looking minimap
+	}
 }
 
 std::shared_ptr<CPicture> CMapOverviewWidget::buildDrawMinimap(const JsonNode & config) const
@@ -133,14 +151,6 @@ std::shared_ptr<CPicture> CMapOverviewWidget::buildDrawMinimap(const JsonNode & 
 
 	if(id >= minimaps.size())
 		return nullptr;
-
-	Point minimapRect = minimaps[id]->dimensions();
-	double maxSideLengthSrc = std::max(minimapRect.x, minimapRect.y);
-	double maxSideLengthDst = std::max(rect.w, rect.h);
-	double resize = maxSideLengthSrc / maxSideLengthDst;
-	Point newMinimapSize = Point(minimapRect.x / resize, minimapRect.y / resize);
-
-	minimaps[id]->scaleTo(newMinimapSize, EScalingAlgorithm::NEAREST); // for sharp-looking minimap
 
 	return std::make_shared<CPicture>(minimaps[id], Point(rect.x, rect.y));
 }
@@ -158,24 +168,40 @@ CMapOverviewWidget::CMapOverviewWidget(CMapOverview& parent):
 		std::unique_ptr<CMap> campaignMap = nullptr;
 		if(p.tabType != ESelectionScreen::newGame && config["variables"]["mapPreviewForSaves"].Bool())
 		{
-			CLoadFile lf(*CResourceHandler::get()->getResourceName(ResourcePath(p.resource.getName(), EResType::SAVEGAME)), ESerializationVersion::MINIMAL);
-			lf.checkMagicBytes(SAVEGAME_MAGIC);
+			CLoadFile lf(*CResourceHandler::get()->getResourceName(ResourcePath(p.resource.getName(), EResType::SAVEGAME)), nullptr);
+			CMapHeader mapHeader;
+			StartInfo startInfo;
+			lf.load(mapHeader);
+			lf.load(startInfo);
 
-			auto mapHeader = std::make_unique<CMapHeader>();
-			StartInfo * startInfo;
-			lf >> *(mapHeader) >> startInfo;
-
-			if(startInfo->campState)
-				campaignMap = startInfo->campState->getMap(*startInfo->campState->currentScenario(), nullptr);
-			res = ResourcePath(startInfo->fileURI, EResType::MAP);
+			if(startInfo.campState)
+				campaignMap = startInfo.campState->getMap(*startInfo.campState->currentScenario(), nullptr);
+			res = ResourcePath(startInfo.fileURI, EResType::MAP);
 		}
 		if(!campaignMap)
 			minimaps = createMinimaps(res);
 		else
 			minimaps = createMinimaps(campaignMap);
+		
+		resizeMinimaps(config["variables"]["minimapRenderSize"].Integer());
 	}
 
 	REGISTER_BUILDER("drawMinimap", &CMapOverviewWidget::buildDrawMinimap);
+
+	addCallback("mapLayerSliderChanged", [&](int index){
+		OBJECT_CONSTRUCTION;
+		for (int i = 0; i < 2; i++)
+		{
+			auto widgetName = "minimap" + std::to_string(i + 1);
+			auto wPos = widget<CPicture>(widgetName)->pos;
+			deleteWidget(widgetName);
+			auto newWidget = std::make_shared<CPicture>(minimaps[index + i], wPos.topLeft() - pos.topLeft());
+			addWidget(widgetName, newWidget);
+			addChild(newWidget.get());
+		}
+		setRedrawParent(true);
+		redraw();
+	});
 
 	build(config);
 
@@ -213,5 +239,12 @@ CMapOverviewWidget::CMapOverviewWidget(CMapOverview& parent):
 	{
 		if(minimaps.size() == 0)
 			w->setText("");
+	}
+	if(auto w = widget<CSlider>("mapLayerSlider"))
+	{
+		if(minimaps.size() <= 2)
+			w->disable();
+		else
+			w->setAmount(minimaps.size());
 	}
 }

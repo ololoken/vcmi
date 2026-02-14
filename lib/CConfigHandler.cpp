@@ -15,14 +15,12 @@
 #include "VCMIDirs.h"
 #include "json/JsonUtils.h"
 
-#ifdef __EMSCRIPTEN__
-#include <emscripten.h>
-#endif
 
 VCMI_LIB_NAMESPACE_BEGIN
 
 SettingsStorage settings;
 SettingsStorage persistentStorage;
+SettingsStorage keyBindingsConfig;
 
 template<typename Accessor>
 SettingsStorage::NodeAccessor<Accessor>::NodeAccessor(SettingsStorage & _parent, std::vector<std::string> _path):
@@ -102,17 +100,6 @@ void SettingsStorage::invalidateNode(const std::vector<std::string> &changedPath
 
 	std::fstream file(CResourceHandler::get()->getResourceName(JsonPath::builtin(dataFilename))->c_str(), std::ofstream::out | std::ofstream::trunc);
 	file << savedConf.toString();
-#ifdef __EMSCRIPTEN__
-	// clang-format off
-	EM_ASM(
-		if (Module._debounced_timeout) clearTimeout(Module._debounced_timeout);
-		Module._debounced_timeout = setTimeout(() => FS.syncfs(err => {
-			if (err) console.error("Failed to sync fs", err);
-			return true;
-		}), 2500);
-	);
-	// clang-format on
-#endif
 }
 
 JsonNode & SettingsStorage::getNode(const std::vector<std::string> & path)

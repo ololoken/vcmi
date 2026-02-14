@@ -12,12 +12,20 @@
 #include <QString>
 
 class QObject;
+class MainWindow;
 
 namespace Helper
 {
-void loadSettings();
-void enableScrollBySwiping(QObject * scrollTarget);
-QString getRealPath(QString path);
-void performNativeCopy(QString src, QString dst);
-void revealDirectoryInFileBrowser(QString path);
+	void loadSettings();
+	void reLoadSettings();
+	void enableScrollBySwiping(QObject * scrollTarget);
+	QString getRealPath(QString path);
+	bool performNativeCopy(QString src, QString dst);
+	void revealDirectoryInFileBrowser(QString path);
+	MainWindow * getMainWindow();
+	void keepScreenOn(bool isEnabled);
+	bool canUseFolderPicker();
+	void nativeFolderPicker(QWidget *parent, std::function<void(QString)>&& cb);
+	QStringList findFilesForCopy(const QString &treeUri);
+	void sendFileToApp(QString path);
 }

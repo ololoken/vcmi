@@ -86,6 +86,51 @@
         <source>Report a bug</source>
         <translation>Повідомити про проблему</translation>
     </message>
+    <message>
+        <location filename="../aboutProject/aboutproject_moc.ui" line="316"/>
+        <source>Export logs</source>
+        <translation>Експортувати файли логів</translation>
+    </message>
+    <message>
+        <location filename="../aboutProject/aboutproject_moc.cpp" line="170"/>
+        <source>Save logs</source>
+        <translation>Зберегти файли логів</translation>
+    </message>
+    <message>
+        <location filename="../aboutProject/aboutproject_moc.cpp" line="170"/>
+        <source>Zip archives (*.zip)</source>
+        <translation>Zip архіви (*.zip)</translation>
+    </message>
+    <message>
+        <location filename="../aboutProject/aboutproject_moc.cpp" line="272"/>
+        <source>Error</source>
+        <translation>Помилка</translation>
+    </message>
+    <message>
+        <location filename="../aboutProject/aboutproject_moc.cpp" line="272"/>
+        <source>Failed to create archive: %1</source>
+        <translation>Не вдалося створити архів: %1</translation>
+    </message>
+    <message>
+        <location filename="../aboutProject/aboutproject_moc.cpp" line="277"/>
+        <source>Send logs</source>
+        <translation>Відправити файли логів</translation>
+    </message>
+    <message>
+        <location filename="../aboutProject/aboutproject_moc.cpp" line="277"/>
+        <source>The archive will be sent via another application. Share your logs e.g. over discord to developers.</source>
+        <translation>Архів буде надіслано через іншу програму. Надішліть ваші файли логів розробникам, наприклад, через Discord.</translation>
+    </message>
+    <message>
+        <location filename="../aboutProject/aboutproject_moc.cpp" line="281"/>
+        <source>Success</source>
+        <translation>Успіх</translation>
+    </message>
+    <message>
+        <location filename="../aboutProject/aboutproject_moc.cpp" line="281"/>
+        <source>Logs saved to %1, please send them to the developers</source>
+        <translation>Файли логів збережені в %1, будь ласка, надішліть їх розробникам</translation>
+    </message>
 </context>
 <context>
     <name>CModListView</name>
@@ -126,7 +171,6 @@
     </message>
     <message>
         <location filename="../modManager/cmodlistview_moc.ui" line="166"/>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="385"/>
         <source>Description</source>
         <translation>Опис</translation>
     </message>
@@ -142,31 +186,31 @@
     </message>
     <message>
         <location filename="../modManager/cmodlistview_moc.ui" line="397"/>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="515"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="550"/>
         <source>Uninstall</source>
         <translation>Видалити</translation>
     </message>
     <message>
         <location filename="../modManager/cmodlistview_moc.ui" line="428"/>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="505"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="540"/>
         <source>Enable</source>
         <translation>Активувати</translation>
     </message>
     <message>
         <location filename="../modManager/cmodlistview_moc.ui" line="459"/>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="500"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="535"/>
         <source>Disable</source>
         <translation>Деактивувати</translation>
     </message>
     <message>
         <location filename="../modManager/cmodlistview_moc.ui" line="490"/>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="520"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="555"/>
         <source>Update</source>
         <translation>Оновити</translation>
     </message>
     <message>
         <location filename="../modManager/cmodlistview_moc.ui" line="521"/>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="510"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="545"/>
         <source>Install</source>
         <translation>Встановити</translation>
     </message>
@@ -186,151 +230,161 @@
         <translation>Відмінити</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="307"/>
         <source>Mod name</source>
-        <translation>Назва модифікації</translation>
+        <translation type="vanished">Назва модифікації</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="310"/>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="316"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="331"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="337"/>
         <source>Installed version</source>
         <translation>Встановлена версія</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="311"/>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="318"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="332"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="339"/>
         <source>Latest version</source>
         <translation>Найновіша версія</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="322"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="343"/>
         <source>Size</source>
         <translation>Розмір</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="325"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="346"/>
         <source>Download size</source>
         <translation>Розмір для завантаження</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="327"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="348"/>
         <source>Authors</source>
         <translation>Автори</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="330"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="351"/>
         <source>License</source>
         <translation>Ліцензія</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="333"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="354"/>
         <source>Contact</source>
         <translation>Контакти</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="342"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="369"/>
         <source>Compatibility</source>
         <translation>Сумісність</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="344"/>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="352"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="371"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="379"/>
         <source>Required VCMI version</source>
         <translation>Необхідна версія VCMI</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="350"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="377"/>
         <source>Supported VCMI version</source>
         <translation>Підтримувана версія VCMI</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="350"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="377"/>
         <source>please upgrade mod</source>
         <translation>будь ласка, оновіть модифікацію</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="179"/>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="891"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="193"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="974"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="979"/>
         <source>mods repository index</source>
         <translation>каталог модифікацій</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="352"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="357"/>
+        <source>Git-Repository</source>
+        <translation>Репозиторій Git</translation>
+    </message>
+    <message>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="360"/>
+        <source>GitHub-Stars</source>
+        <translation>Зірки GitHub</translation>
+    </message>
+    <message>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="379"/>
         <source>or newer</source>
         <translation>або новіше</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="355"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="382"/>
         <source>Supported VCMI versions</source>
         <translation>Підтримувані версії VCMI</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="371"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="398"/>
         <source>Languages</source>
         <translation>Мови</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="383"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="410"/>
         <source>Required mods</source>
         <translation>Необхідні модифікації</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="384"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="411"/>
         <source>Conflicting mods</source>
         <translation>Конфліктуючі модифікації</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="389"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="413"/>
         <source>This mod cannot be enabled because it translates into a different language.</source>
         <translation>Цю модифікацію не можна увімкнути, оскільки це переклад на іншу мову.</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="390"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="414"/>
         <source>This mod can not be enabled because the following dependencies are not present</source>
         <translation>Цю модифікацію не можна увімкнути, оскільки відсутні наступні залежності</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="391"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="415"/>
         <source>This mod can not be installed because the following dependencies are not present</source>
         <translation>Цю модифікацію не можна встановити, оскільки відсутні наступні залежності</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="392"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="416"/>
         <source>This is a submod and it cannot be installed or uninstalled separately from its parent mod</source>
         <translation>Це вкладена модифікація, і її не можна встановити або видалити окремо від батьківської модифікації</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="411"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="435"/>
         <source>Notes</source>
         <translation>Примітки</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="482"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="517"/>
         <source>Context menu</source>
         <translation>Контекстне меню</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="525"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="560"/>
         <source>Open directory</source>
         <translation>Відкрити теку</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="530"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="565"/>
         <source>Open repository</source>
         <translation>Відкрити репозиторій</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="783"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="826"/>
         <source>Downloading %1. %p% (%v MB out of %m MB) finished</source>
         <translation>Завантажується %1. %p% (%v MB з %m MB) завершено</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="808"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="852"/>
         <source>Download failed</source>
         <translation>Помилка завантаження</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="809"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="853"/>
         <source>Unable to download all files.
 
 Encountered errors:
@@ -343,7 +397,7 @@ Encountered errors:
 </translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="810"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="854"/>
         <source>
 
 Install successfully downloaded?</source>
@@ -352,39 +406,99 @@ Install successfully downloaded?</source>
 Встановити успішно завантажені?</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="940"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="949"/>
+        <source>Failed to install file %1.
+Reason: %2.
+Please report this issue to developers</source>
+        <translation>Не вдалося встановити файл %1.
+Причина: %2.
+Будь ласка, повідомте про цю проблему розробникам</translation>
+    </message>
+    <message>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="1043"/>
         <source>Installing Heroes Chronicles</source>
         <translation>Встановлюємо Хроніки Героїв</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="1020"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="1130"/>
         <source>Installing mod %1</source>
         <translation>Встановлення модифікації %1</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="1073"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="1198"/>
+        <source>Map exists</source>
+        <translation>Мапа існує</translation>
+    </message>
+    <message>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="1199"/>
+        <source>Map &apos;%1&apos; already exists. Do you want to overwrite it?</source>
+        <translation>Мапа &apos;%1&apos; вже існує. Перезаписати?</translation>
+    </message>
+    <message>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="1208"/>
+        <source>Yes to All</source>
+        <translation>Так для всіх</translation>
+    </message>
+    <message>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="1209"/>
+        <source>No to All</source>
+        <translation>Ні для всіх</translation>
+    </message>
+    <message>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="1298"/>
+        <source>Import complete</source>
+        <translation>Імпортування завершено</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../modManager/cmodlistview_moc.cpp" line="1298"/>
+        <source>%n map(s) successfully imported.</source>
+        <translation>
+            <numerusform>Успішно імпортовано %n мапу.</numerusform>
+            <numerusform>Успішно імпортовано %n мапи.</numerusform>
+            <numerusform>Успішно імпортовано %n мап.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%1 map(s) successfully imported.</source>
+        <translation type="vanished">Успішно імпортовано %1 мап.</translation>
+    </message>
+    <message>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="949"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="1301"/>
+        <source>Import failed</source>
+        <translation>Помилка імпорту</translation>
+    </message>
+    <message>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="1301"/>
+        <source>Failed to import the following maps:
+%1</source>
+        <translation>Не вдалося імпортувати такі мапи:
+%1</translation>
+    </message>
+    <message>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="1327"/>
         <source>Operation failed</source>
         <translation>Операція завершилася невдало</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="1074"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="1328"/>
         <source>Encountered errors:
 </source>
         <translation>Виникли помилки:
 </translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="1110"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="1364"/>
         <source>screenshots</source>
         <translation>знімки екрану</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="1116"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="1370"/>
         <source>Screenshot %1</source>
         <translation>Знімок екрану %1</translation>
     </message>
     <message>
-        <location filename="../modManager/cmodlistview_moc.cpp" line="302"/>
+        <location filename="../modManager/cmodlistview_moc.cpp" line="314"/>
         <source>Mod is incompatible</source>
         <translation>Модифікація несумісна</translation>
     </message>
@@ -392,150 +506,160 @@ Install successfully downloaded?</source>
 <context>
     <name>CSettingsView</name>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="705"/>
-        <location filename="../settingsView/csettingsview_moc.cpp" line="98"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="166"/>
+        <location filename="../settingsView/csettingsview_moc.cpp" line="115"/>
         <source>Off</source>
         <translation>Ні</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="441"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="420"/>
         <source>Artificial Intelligence</source>
         <translation>Штучний інтелект</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1084"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="523"/>
         <source>Interface Scaling</source>
         <translation>Масштабування інтерфейсу</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="627"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1299"/>
         <source>Neutral AI in battles</source>
         <translation>Нейтральний ШІ в боях</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1042"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="875"/>
         <source>Enemy AI in battles</source>
         <translation>Ворожий ШІ в боях</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="774"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="912"/>
         <source>Additional repository</source>
         <translation>Додатковий репозиторій</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="484"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="642"/>
         <source>Downscaling Filter</source>
         <translation>Фільтр для зменьшення масштабу</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="620"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="447"/>
         <source>Adventure Map Allies</source>
         <translation>Союзники на мапі пригод</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="889"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="252"/>
         <source>Online Lobby port</source>
         <translation>Порт онлайн лобі</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="689"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1164"/>
         <source>Autocombat AI in battles</source>
         <translation>ШІ автобою</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1445"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="348"/>
         <source>Sticks Sensitivity</source>
         <translation>Чутливість стиків</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="931"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1211"/>
         <source>Automatic (Linear)</source>
         <translation>Автоматично (Лінійний)</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="274"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="704"/>
         <source>Haptic Feedback</source>
-        <translation></translation>
+        <translation>Тактильний відгук</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="378"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="846"/>
         <source>Software Cursor</source>
         <translation>Програмний курсор</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="83"/>
-        <location filename="../settingsView/csettingsview_moc.ui" line="562"/>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1435"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="469"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="625"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="859"/>
         <source>Automatic</source>
         <translation>Автоматично</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="75"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="334"/>
         <source>Mods Validation</source>
         <translation>Валідація модифікацій</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="88"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1349"/>
+        <source>Config editor</source>
+        <translation>Редактор конфігурації</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/csettingsview_moc.ui" line="437"/>
+        <source>Open editor</source>
+        <translation>Відкрити редактор</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/csettingsview_moc.ui" line="474"/>
         <source>None</source>
         <translation>Немає</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="93"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="479"/>
         <source>xBRZ x2</source>
         <translation>xBRZ x2</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="98"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="484"/>
         <source>xBRZ x3</source>
         <translation>xBRZ x3</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="103"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="489"/>
         <source>xBRZ x4</source>
         <translation>xBRZ x4</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="316"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="68"/>
         <source>Full</source>
         <translation>Повне</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="533"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="882"/>
         <source>Allow portrait mode</source>
         <translation>Дозволити портретну орієнтацію</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="811"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1003"/>
         <source>Use scalable fonts</source>
         <translation>Використання векторних шрифтів</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="882"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1306"/>
         <source>Online Lobby address</source>
         <translation>Адреса онлайн-лобі</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1019"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="649"/>
         <source>Handle back as right mouse button</source>
         <translation>Кнопка «Назад» як права кнопка миші</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1125"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="259"/>
         <source>Cursor Scaling</source>
         <translation>Масштабування курсору</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1154"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="925"/>
         <source>Scalable</source>
         <translation>Векторні</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1190"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="554"/>
         <source>Miscellaneous</source>
         <translation>Інше</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1228"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1407"/>
         <source>Select a display mode for the game
 
 Windowed - the game will run inside a window that covers part of your screen.
@@ -552,232 +676,247 @@ Fullscreen Exclusive Mode - the game will cover the entirety of your screen and 
 Повноекранний ексклюзивний режим - гра займатиме весь екран і використовуватиме вибрану роздільну здатність.</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1349"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="327"/>
         <source>Font Scaling (experimental)</source>
         <translation>Масштабування шрифтів ( експериментально)</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1413"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="984"/>
         <source>Original</source>
         <translation>Оригінальні</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1452"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="694"/>
         <source>Upscaling Filter</source>
         <translation>Фільтр масштабування</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1485"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="141"/>
         <source>Basic</source>
         <translation>Базова</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="679"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="385"/>
+        <source>Ignore mute switch</source>
+        <translation>Ігнорувати безшумний режим</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/csettingsview_moc.ui" line="564"/>
+        <source>Show Status in Discord</source>
+        <translation>Відображати статус у Discord</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/csettingsview_moc.ui" line="656"/>
         <source>Use Relative Pointer Mode</source>
         <translation>Режим відносного вказівника</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="921"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1201"/>
         <source>Nearest</source>
         <translation>Найближчий</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="926"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1206"/>
         <source>Linear</source>
         <translation>Лінійний</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="830"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1246"/>
         <source>Input - Touchscreen</source>
         <translation>Введення - Сенсорний екран</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="797"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1514"/>
+        <source>Save Before Visit</source>
+        <translation>Зберігати гру перед візитом об&apos;єкту</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/csettingsview_moc.ui" line="793"/>
         <source>Adventure Map Enemies</source>
         <translation>Вороги на мапі пригод</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="949"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="362"/>
         <source>Show Tutorial again</source>
         <translation>Повторно показати навчання</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="139"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="355"/>
         <source>Reset</source>
         <translation>Скинути</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1175"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="187"/>
         <source>Network</source>
         <translation>Мережа</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="764"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="953"/>
         <source>Audio</source>
         <translation>Аудіо</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="477"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1400"/>
         <source>Relative Pointer Speed</source>
         <translation>Швидкість відносного вказівника</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1091"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="905"/>
         <source>Music Volume</source>
         <translation>Гучність музики</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="939"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1279"/>
         <source>Ignore SSL errors</source>
         <translation>Ігнорувати помилки SSL</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="726"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1231"/>
         <source>Input - Mouse</source>
         <translation>Введення - Миша</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1272"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="313"/>
         <source>Long Touch Duration</source>
         <translation>Тривалість довгого дотику</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="896"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1342"/>
         <source>Controller Click Tolerance</source>
         <translation>Допуск на натискання контролера</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="281"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="635"/>
         <source>Touch Tap Tolerance</source>
         <translation>Допуск на натискання дотиком</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="337"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1176"/>
         <source>Input - Controller</source>
         <translation>Введення - Контролер</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="267"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1272"/>
         <source>Sound Volume</source>
         <translation>Гучність звуку</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1241"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1420"/>
         <source>Windowed</source>
         <translation>У вікні</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1246"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1425"/>
         <source>Borderless fullscreen</source>
         <translation>Повноекранне вікно</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1251"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1430"/>
         <source>Exclusive fullscreen</source>
         <translation>Повноекранний (ексклюзивно)</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1049"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1186"/>
         <source>Autosave limit (0 = off)</source>
         <translation>Кількість автозбережень</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="804"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="320"/>
         <source>Framerate Limit</source>
         <translation>Обмеження частоти кадрів</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1459"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="718"/>
         <source>Autosave prefix</source>
         <translation>Префікс назв автозбережень</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1012"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="711"/>
         <source>Mouse Click Tolerance</source>
         <translation>Допуск кліків миші</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="956"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1100"/>
         <source>Sticks Acceleration</source>
         <translation>Прискорення стиків</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1400"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="753"/>
         <source>empty = map name prefix</source>
         <translation>(використовувати назву карти)</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="613"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="461"/>
         <source>Refresh now</source>
         <translation>Оновити зараз</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="451"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="454"/>
         <source>Default repository</source>
         <translation>Стандартний репозиторій</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="818"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1193"/>
         <source>Renderer</source>
         <translation>Рендерер</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.cpp" line="96"/>
+        <location filename="../settingsView/csettingsview_moc.cpp" line="113"/>
         <source>On</source>
         <translation>Так</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="200"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1219"/>
         <source>Reserved screen area</source>
         <translation>Зарезервована зона екрану</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="429"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="392"/>
         <source>Heroes III Translation</source>
         <translation>Переклад Heroes III</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1279"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="197"/>
         <source>Check on startup</source>
         <translation>Перевіряти на старті</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1005"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="1157"/>
         <source>Fullscreen</source>
         <translation>Повноекранний режим</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="212"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="296"/>
         <source>General</source>
         <translation>Загальні налаштування</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="875"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="226"/>
         <source>VCMI Language</source>
         <translation>Мова VCMI</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="1466"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="816"/>
         <source>Resolution</source>
         <translation>Роздільна здатність</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="222"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="430"/>
         <source>Autosave</source>
         <translation>Автозбереження</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="787"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="112"/>
         <source>VSync</source>
         <translation>Вертикальна синхронізація</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="672"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="823"/>
         <source>Display index</source>
         <translation>Дісплей</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="736"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="306"/>
         <source>Network port</source>
         <translation>Мережевий порт</translation>
     </message>
@@ -787,32 +926,62 @@ Fullscreen Exclusive Mode - the game will cover the entirety of your screen and 
         <translation>Графіка</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.ui" line="526"/>
+        <location filename="../settingsView/csettingsview_moc.ui" line="941"/>
         <source>Show intro</source>
         <translation>Вступні відео</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.cpp" line="547"/>
+        <location filename="../settingsView/csettingsview_moc.cpp" line="124"/>
+        <source>StupidAI (deprecated)</source>
+        <translation>StupidAI (застарілий)</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/csettingsview_moc.cpp" line="128"/>
+        <source>BattleAI (default, recommended)</source>
+        <translation>BattleAI (рекомендовано за замовчуванням)</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/csettingsview_moc.cpp" line="132"/>
+        <source>MMAI (experimental)</source>
+        <translation>MMAI (експериментальний)</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/csettingsview_moc.cpp" line="145"/>
+        <source>Nullkiller (superseded by Nullkiller2)</source>
+        <translation>Nullkiller (застарілий, замінено Nullkiller2)</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/csettingsview_moc.cpp" line="149"/>
+        <source>Nullkiller2 (default, recommended)</source>
+        <translation>Nullkiller2 (рекомендовано за замовчуванням)</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/csettingsview_moc.cpp" line="159"/>
+        <source>EmptyAI - No valid AI libraries found!</source>
+        <translation>EmptyAI - Не знайдено доступних бібліотек ШІ!</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/csettingsview_moc.cpp" line="672"/>
         <source>Active</source>
         <translation>Активні</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.cpp" line="552"/>
+        <location filename="../settingsView/csettingsview_moc.cpp" line="677"/>
         <source>Disabled</source>
         <translation>Деактивований</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.cpp" line="553"/>
+        <location filename="../settingsView/csettingsview_moc.cpp" line="678"/>
         <source>Enable</source>
         <translation>Активувати</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.cpp" line="558"/>
+        <location filename="../settingsView/csettingsview_moc.cpp" line="683"/>
         <source>Not Installed</source>
         <translation>Не встановлено</translation>
     </message>
     <message>
-        <location filename="../settingsView/csettingsview_moc.cpp" line="559"/>
+        <location filename="../settingsView/csettingsview_moc.cpp" line="684"/>
         <source>Install</source>
         <translation>Встановити</translation>
     </message>
@@ -852,9 +1021,47 @@ Fullscreen Exclusive Mode - the game will cover the entirety of your screen and 
     </message>
 </context>
 <context>
+    <name>ConfigEditorDialog</name>
+    <message>
+        <location filename="../settingsView/configeditordialog_moc.ui" line="50"/>
+        <source>Save</source>
+        <translation>Зберегти</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/configeditordialog_moc.ui" line="73"/>
+        <source>File:</source>
+        <translation>Файл:</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/configeditordialog_moc.ui" line="86"/>
+        <source>Close</source>
+        <translation>Закрити</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/configeditordialog_moc.cpp" line="27"/>
+        <source>Config editor</source>
+        <translation>Редактор конфігурації</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/configeditordialog_moc.cpp" line="69"/>
+        <source>Unsaved changes</source>
+        <translation>Незбережені зміни</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/configeditordialog_moc.cpp" line="69"/>
+        <source>Do you want to discard changes?</source>
+        <translation>Бажаєте скасувати зроблені зміни?</translation>
+    </message>
+    <message>
+        <location filename="../settingsView/configeditordialog_moc.cpp" line="123"/>
+        <source>JSON file is not valid!</source>
+        <translation>Файл JSON некоректний!</translation>
+    </message>
+</context>
+<context>
     <name>File size</name>
     <message>
-        <location filename="../modManager/modstate.cpp" line="140"/>
+        <location filename="../modManager/modstate.cpp" line="145"/>
         <location filename="../modManager/modstatemodel.cpp" line="93"/>
         <source>%1 MiB</source>
         <translation>%1 МіБ</translation>
@@ -883,92 +1090,136 @@ Fullscreen Exclusive Mode - the game will cover the entirety of your screen and 
         <translation>Оберіть свою мову</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="169"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="172"/>
         <source>Have a question? Found a bug? Want to help? Join us!</source>
         <translation>Маєте питання? Виявили помилку? Хочете допомогти? Приєднуйтесь до нас!</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="248"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="251"/>
         <source>Locate Heroes III data files</source>
         <translation>Пошук файлів даних Heroes III</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="297"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="303"/>
         <source>Use offline installer from gog.com</source>
         <translation>Використати офлайн-інсталятор з gog.com</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="329"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="316"/>
+        <source>You can manually copy Maps, Data, and Mp3 folders from the original game directory to the VCMI data directory shown below</source>
+        <translation>Ви можете самостійно скопіювати папки Maps, Data та Mp3 з оригінального каталогу гри до каталогу даних VCMI, показаного нижче</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="335"/>
         <source>Install gog.com files</source>
         <translation>Встановити файли gog.com</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="488"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="494"/>
         <source>Your Heroes III data files have been successfully found.</source>
         <translation>Файли даних вашої гри Heroes III успішно знайдено.</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="742"/>
         <source>Interface Improvements</source>
-        <translation>Удосконалення нтерфейсу</translation>
+        <translation type="vanished">Удосконалення нтерфейсу</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="622"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="631"/>
         <source>Install a translation of Heroes III in your preferred language</source>
         <translation>Встановити переклад Heroes III на вашу мову</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="388"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="394"/>
         <source>Installing... %p%</source>
         <translation>Встановлюємо... %p%</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="417"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="423"/>
         <source>If you already have Heroes III files on your device, you can select this directory and VCMI will copy the existing data automatically.</source>
         <translation>Якщо на вашому пристрої вже є файли Heroes III, ви можете вибрати цю теку і VCMI автоматично скопіює наявні дані.</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="459"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="465"/>
         <source>Copy existing files</source>
         <translation>Скопіювати існуючі файли</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="689"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="600"/>
+        <source>Install recommended VCMI Mods</source>
+        <translation>Встановити рекомендовані модифікації VCMI</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="704"/>
         <source>Optionally, you can install additional mods either now, or at any point later, using the VCMI Launcher</source>
         <translation>За бажанням ви можете встановити додаткові модифікації зараз або пізніше, використовуючи VCMI Launcher</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="673"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="688"/>
         <source>Install compatible version of &quot;Horn of the Abyss&quot;, a fan-made Heroes III expansion ported by the VCMI team</source>
         <translation>Встановити сумісну версію доповнення &quot;Horn of the Abyss&quot;, фанатське доповнення Heroes III, портоване командою VCMI</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="772"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="769"/>
+        <source>VCMI Extras</source>
+        <translation>VCMI Extras</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="799"/>
         <source>Install compatible version of &quot;In The Wake of Gods&quot;, a fan-made Heroes III expansion</source>
         <translation>Встановити сумісну версію доповнення &quot;In The Wake of Gods&quot;, фанатське доповнення до Heroes III</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="788"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="815"/>
+        <source>A feature-rich expansion that expands gameplay with one alternative unit for each of the 9 standard towns, plus new neutral creatures, creature banks, skills and spells</source>
+        <translation>Насичене розширенням, яке доповнює ігровий процес альтернативною істотою для кожного з 9 стандартних міст, а також новими нейтральними істотами, банками істот, навичками та закляттями</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="831"/>
+        <source>Descend into the underground realm and uncover Casemate — a new faction where mushrooms, stone and rune magic thrive in the dark, created for VCMI</source>
+        <translation>Спустіться в підземне царство і відкрийте для себе Каземат — нову фракцію, де в темряві процвітають гриби, камінь і магія рун, створену для VCMI</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="847"/>
+        <source>Heroes III Demo files detected. This mod is required to use demo assets in VCMI, or the game will crash</source>
+        <translation>Виявлено файли Heroes III Demo. Цей мод необхідний для використання демо-ресурсів у VCMI</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="863"/>
         <source>Install mod that provides various interface improvements, such as a better interface for random maps and selectable actions in battles</source>
         <translation>Встановити різноманітні покращення інтерфейсу, такі як покращений інтерфейс випадкових карт та вибір варіантів дій у боях</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="867"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="928"/>
+        <source>Tides of War</source>
+        <translation>Tides of War</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="966"/>
+        <source>Fallen of the Depth</source>
+        <translation>Fallen of the Depth</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="1004"/>
+        <source>Demo support</source>
+        <translation>Підтримка демо</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="1065"/>
         <source>Finish</source>
         <translation>Завершити</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="155"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="158"/>
         <source>VCMI on Github</source>
         <translation>VCMI на Github</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="162"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="165"/>
         <source>VCMI on Discord</source>
         <translation>VCMI на Discord</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="178"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="181"/>
         <source>Thank you for installing VCMI!
 
 Before you can start playing, there are a few more steps to complete.
@@ -985,174 +1236,257 @@ Heroes® of Might and Magic® III HD is currently not supported!</source>
 Heroes® of Might and Magic® III HD наразі не підтримується!</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="212"/>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="564"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="215"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="570"/>
         <source>Next</source>
         <translation>Далі</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="310"/>
         <source>You can manually copy directories Maps, Data, and Mp3 from the original game directory to the VCMI data directory that you can see on top of this page</source>
-        <translation>Ви можете вручну скопіювати теки Maps, Data та Mp3 з теки оригінальної гри до теки даних VCMI, яку ви можете побачити вгорі цієї сторінки</translation>
+        <translation type="vanished">Ви можете вручну скопіювати теки Maps, Data та Mp3 з теки оригінальної гри до теки даних VCMI, яку ви можете побачити вгорі цієї сторінки</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="347"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="353"/>
         <source>Manual Installation</source>
         <translation>Ручне встановлення</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="360"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="366"/>
         <source>Search again</source>
         <translation>Повторити пошук</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="441"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="447"/>
         <source>Heroes III data files</source>
         <translation>Файли даних Heroes III</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="279"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="285"/>
         <source>Copy existing data</source>
         <translation>Копіювати наявні дані</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="504"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="510"/>
         <source>If you own Heroes III on gog.com, you can download a backup offline installer from gog.com. VCMI will then import Heroes III data using the offline installer. 
 Offline installer consists of two files: &quot;.exe&quot; and &quot;.bin&quot; - you must download both.</source>
         <translation>Якщо у вас є Heroes III на gog.com, ви можете завантажити резервну копію офлайн-інсталятора з gog.com, і VCMI імпортує дані Heroes III за допомогою офлайн-інсталятора. 
 Офлайн-інсталятор складається з двох частин, .exe та .bin. Переконайтеся, що ви завантажили обидві частини.</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="557"/>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="860"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="563"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="1058"/>
         <source>Back</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="594"/>
         <source>Install VCMI Mod Preset</source>
-        <translation>Встановлення початкових модифікацій VCMI</translation>
+        <translation type="vanished">Встановлення початкових модифікацій VCMI</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="710"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="731"/>
         <source>Horn of the Abyss</source>
         <translation>Horn of the Abyss</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="643"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="658"/>
         <source>Heroes III Translation</source>
         <translation>Переклад Heroes III</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.ui" line="809"/>
+        <location filename="../firstLaunch/firstlaunch_moc.ui" line="890"/>
         <source>In The Wake of Gods</source>
         <translation>In The Wake of Gods</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="175"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="174"/>
         <source>Heroes III installation found!</source>
         <translation>Інсталяцію Heroes III знайдено!</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="175"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="174"/>
         <source>Copy data to VCMI folder?</source>
         <translation>Скопіювати дані до теки VCMI?</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="322"/>
         <source>Select %1 file...</source>
         <comment>param is file extension</comment>
-        <translation>Оберіть файл %1...</translation>
+        <translation type="vanished">Оберіть файл %1...</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="323"/>
         <source>You have to select %1 file!</source>
         <comment>param is file extension</comment>
-        <translation>Ви повинні обрати файл %1!</translation>
+        <translation type="vanished">Ви повинні обрати файл %1!</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="325"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="401"/>
         <source>GOG file (*.*)</source>
         <translation>Файл GOG (*.*)</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="326"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="402"/>
         <source>File selection</source>
         <translation>Вибір файлу</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="335"/>
-        <source>File cannot be opened</source>
-        <translation>Не вдається відкрити файл</translation>
-    </message>
-    <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="341"/>
-        <source>Invalid file selected</source>
-        <translation>Обрано невірний файл</translation>
-    </message>
-    <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="351"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="413"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="613"/>
         <source>GOG installer</source>
         <translation>Інсталятор GOG</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="495"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="506"/>
         <source>Heroes III: HD Edition files are not supported by VCMI.
 Please select the directory with Heroes III: Complete Edition or Heroes III: Shadow of Death.</source>
         <translation>Файли Heroes III: HD Edition не підтримуються VCMI.
 Будь ласка, виберіть теку з Heroes III: Complete Edition або Heroes III: Shadow of Death.</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="500"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="508"/>
         <source>Unknown or unsupported Heroes III version found.
 Please select the directory with Heroes III: Complete Edition or Heroes III: Shadow of Death.</source>
         <translation>Знайдено невідому або не підтримувану версію Heroes III.
 Будь ласка, виберіть теку з Heroes III: Complete Edition або Heroes III: Shadow of Death.</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="348"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="429"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="626"/>
         <source>GOG data</source>
         <translation>Дані GOG</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="397"/>
-        <source>You&apos;ve provided a GOG Galaxy installer! This file doesn&apos;t contain the game. Please download the offline backup game installer!</source>
-        <translation>Ви надали інсталятор GOG Galaxy! Цей файл не містить гри. Будь ласка, завантажте резервну копію інсталятора гри!</translation>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="348"/>
+        <source>Failed to open file: %1</source>
+        <translation>Не вдалося відкрити файл: %1</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="423"/>
+        <source>You&apos;ve provided a GOG Galaxy installer! This file doesn&apos;t contain the game. Please download the offline backup game installer!</source>
+        <translation type="vanished">Ви надали інсталятор GOG Galaxy! Цей файл не містить гри. Будь ласка, завантажте резервну копію інсталятора гри!</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="669"/>
         <source>Hash error!</source>
         <translation>Помилка хешу!</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="427"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="673"/>
         <source>No Heroes III data!</source>
         <translation>Немає файлів даних Heroes III!</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="427"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="673"/>
         <source>Selected files do not contain Heroes III data!</source>
         <translation>Обрані файли не містять файлів з грою Heroes III!</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="471"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="470"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="503"/>
         <source>Failed to detect valid Heroes III data in chosen directory.
 Please select the directory with installed Heroes III data.</source>
         <translation>Не вдалося виявити файли Heroes III у вибраному каталозі.
 Будь ласка, виберіть теку зі встановленими даними Heroes III.</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="474"/>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="488"/>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="495"/>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="500"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="366"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="391"/>
+        <source>You need to select a %1 file!</source>
+        <comment>param is file extension</comment>
+        <translation>Необхідно вибрати файл %1!</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="373"/>
+        <source>Unknown installer selected.
+You need to select the offline GOG installer.</source>
+        <translation>Вибрано невідомий інсталятор.
+
+Вам потрібно вибрати офлайн-інсталятор GOG.</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="385"/>
+        <source>You selected a GOG Galaxy installer. This file does not contain the game. Please download the offline backup game installer instead.</source>
+        <translation>Ви вибрали інсталятор GOG Galaxy. Цей файл не містить гру. Замість цього завантажте резервний офлайн-інсталятор гри.</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="414"/>
+        <source>Select the offline GOG installer (.exe)</source>
+        <translation>Виберіть офлайн-інсталятор GOG (.exe)</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="423"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="616"/>
+        <source>Invalid file selected</source>
+        <translation>Обрано невірний файл</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="430"/>
+        <source>Select the offline GOG installer data file: %1</source>
+        <comment>param is file name</comment>
+        <translation>Виберіть файл даних офлайн-інсталятора GOG: %1</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="450"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="629"/>
+        <source>Invalid data file</source>
+        <translation>Невірний файл даних</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="470"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="514"/>
         <source>Heroes III data not found!</source>
         <translation>Файли даних Heroes III не знайдено!</translation>
     </message>
     <message>
-        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="419"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="545"/>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="681"/>
+        <source>Importing Heroes III data...</source>
+        <translation>Імпортування даних Heroes III...</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="578"/>
+        <source>Preparing installer...</source>
+        <translation>Підготовка інсталятора...</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="638"/>
+        <source>Extracting installer...</source>
+        <translation>Видобування інсталятора...</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="665"/>
         <source>Extracting error!</source>
         <translation>Помилка видобування!</translation>
+    </message>
+    <message>
+        <location filename="../firstLaunch/firstlaunch_moc.cpp" line="695"/>
+        <source>Scanning selected folder...</source>
+        <translation>Сканування вибраної теки...</translation>
+    </message>
+</context>
+<context>
+    <name>HdExtractor</name>
+    <message>
+        <location filename="../modManager/hdextractor.cpp" line="38"/>
+        <source>Select Directory with HD Edition (Steam folder)</source>
+        <translation>Виберіть каталог з HD Edition (у папці Steam)</translation>
+    </message>
+    <message>
+        <location filename="../modManager/hdextractor.cpp" line="46"/>
+        <source>Invalid folder</source>
+        <translation>Невірна папка</translation>
+    </message>
+    <message>
+        <location filename="../modManager/hdextractor.cpp" line="46"/>
+        <source>The selected folder does not contain HOMM3 2.0.exe! Please select the HD Edition installation folder.</source>
+        <translation>Вибрана папка не містить файл HOMM3 2.0.exe! Будь ласка, оберіть папку з інсталяцією HD Edition.</translation>
+    </message>
+    <message>
+        <location filename="../modManager/hdextractor.cpp" line="98"/>
+        <source>Extraction error</source>
+        <translation>Помилка видобутку</translation>
+    </message>
+    <message>
+        <location filename="../modManager/hdextractor.cpp" line="98"/>
+        <source>Please delete mod and try again! Failed to copy file %1 to %2</source>
+        <translation>Будь ласка, видаліть модифікацію і спробуйте ще раз! Не вдалося скопіювати файл %1 до %2</translation>
     </message>
 </context>
 <context>
@@ -1183,7 +1517,7 @@ error reason: </source>
         <translation>VCMI було створено без підтримки innoextract, яка необхідна для розпакування exe-файлів!</translation>
     </message>
     <message numerus="yes">
-        <location filename="../innoextract.cpp" line="135"/>
+        <location filename="../innoextract.cpp" line="143"/>
         <source>SHA1 hash of provided files:
 Exe (%n bytes):
 %1</source>
@@ -1201,7 +1535,7 @@ Exe (%n байтів):
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../innoextract.cpp" line="137"/>
+        <location filename="../innoextract.cpp" line="145"/>
         <source>
 Bin (%n bytes):
 %1</source>
@@ -1219,7 +1553,7 @@ Bin (%n байтів):
         </translation>
     </message>
     <message>
-        <location filename="../innoextract.cpp" line="140"/>
+        <location filename="../innoextract.cpp" line="148"/>
         <source>Internal copy process failed. Enough space on device?
 
 %1</source>
@@ -1228,17 +1562,17 @@ Bin (%n байтів):
 %1</translation>
     </message>
     <message>
-        <location filename="../innoextract.cpp" line="149"/>
+        <location filename="../innoextract.cpp" line="157"/>
         <source>Exe</source>
         <translation>Exe</translation>
     </message>
     <message>
-        <location filename="../innoextract.cpp" line="149"/>
+        <location filename="../innoextract.cpp" line="157"/>
         <source>Bin</source>
         <translation>Bin</translation>
     </message>
     <message>
-        <location filename="../innoextract.cpp" line="158"/>
+        <location filename="../innoextract.cpp" line="166"/>
         <source>Language mismatch!
 %1
 
@@ -1249,7 +1583,7 @@ Bin (%n байтів):
 %2</translation>
     </message>
     <message>
-        <location filename="../innoextract.cpp" line="160"/>
+        <location filename="../innoextract.cpp" line="168"/>
         <source>Only one file known! Maybe files are corrupted? Please download again.
 %1
 
@@ -1260,7 +1594,7 @@ Bin (%n байтів):
 %2</translation>
     </message>
     <message>
-        <location filename="../innoextract.cpp" line="166"/>
+        <location filename="../innoextract.cpp" line="174"/>
         <source>Unknown files! Maybe files are corrupted? Please download again.
 
 %1</source>
@@ -1273,91 +1607,121 @@ Bin (%n байтів):
     <name>Language</name>
     <message>
         <location filename="../languages.cpp" line="23"/>
+        <source>Belarusian</source>
+        <translation>Білоруська</translation>
+    </message>
+    <message>
+        <location filename="../languages.cpp" line="24"/>
+        <source>Bulgarian</source>
+        <translation>Болгарська</translation>
+    </message>
+    <message>
+        <location filename="../languages.cpp" line="25"/>
         <source>Czech</source>
         <translation>Чеська</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="24"/>
+        <location filename="../languages.cpp" line="26"/>
         <source>Chinese</source>
         <translation>Китайська</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="25"/>
+        <location filename="../languages.cpp" line="27"/>
         <source>English</source>
         <translation>Англійська</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="26"/>
+        <location filename="../languages.cpp" line="28"/>
         <source>Finnish</source>
         <translation>Фінська</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="27"/>
+        <location filename="../languages.cpp" line="29"/>
         <source>French</source>
         <translation>Французька</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="28"/>
+        <location filename="../languages.cpp" line="30"/>
         <source>German</source>
         <translation>Німецька</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="29"/>
+        <location filename="../languages.cpp" line="31"/>
+        <source>Greek</source>
+        <translation>Грецька</translation>
+    </message>
+    <message>
+        <location filename="../languages.cpp" line="32"/>
         <source>Hungarian</source>
         <translation>Угорська</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="30"/>
+        <location filename="../languages.cpp" line="33"/>
         <source>Italian</source>
         <translation>Італійська</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="31"/>
+        <location filename="../languages.cpp" line="34"/>
+        <source>Japanese</source>
+        <translation>Японська</translation>
+    </message>
+    <message>
+        <location filename="../languages.cpp" line="35"/>
         <source>Korean</source>
         <translation>Корейська</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="32"/>
+        <location filename="../languages.cpp" line="36"/>
+        <source>Norwegian</source>
+        <translation>Норвезька</translation>
+    </message>
+    <message>
+        <location filename="../languages.cpp" line="37"/>
         <source>Polish</source>
         <translation>Польська</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="33"/>
+        <location filename="../languages.cpp" line="38"/>
         <source>Portuguese</source>
         <translation>Португальська</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="34"/>
+        <location filename="../languages.cpp" line="39"/>
+        <source>Romanian</source>
+        <translation>Румунська</translation>
+    </message>
+    <message>
+        <location filename="../languages.cpp" line="40"/>
         <source>Russian</source>
         <translation>Російська</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="35"/>
+        <location filename="../languages.cpp" line="41"/>
         <source>Spanish</source>
         <translation>Іспанська</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="36"/>
+        <location filename="../languages.cpp" line="42"/>
         <source>Swedish</source>
         <translation>Шведська</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="37"/>
+        <location filename="../languages.cpp" line="43"/>
         <source>Turkish</source>
         <translation>Турецька</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="38"/>
+        <location filename="../languages.cpp" line="44"/>
         <source>Ukrainian</source>
         <translation>Українська</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="39"/>
+        <location filename="../languages.cpp" line="45"/>
         <source>Vietnamese</source>
         <translation>В&apos;єтнамська</translation>
     </message>
     <message>
-        <location filename="../languages.cpp" line="61"/>
+        <location filename="../languages.cpp" line="67"/>
         <source>Auto (%1)</source>
         <translation>Авто (%1)</translation>
     </message>
@@ -1370,27 +1734,27 @@ Bin (%n байтів):
         <translation>VCMI Launcher</translation>
     </message>
     <message>
-        <location filename="../mainwindow_moc.ui" line="104"/>
+        <location filename="../mainwindow_moc.ui" line="107"/>
         <source>Mods</source>
         <translation>Модифікації</translation>
     </message>
     <message>
-        <location filename="../mainwindow_moc.ui" line="150"/>
+        <location filename="../mainwindow_moc.ui" line="153"/>
         <source>Settings</source>
         <translation>Налаштування</translation>
     </message>
     <message>
-        <location filename="../mainwindow_moc.ui" line="196"/>
+        <location filename="../mainwindow_moc.ui" line="199"/>
         <source>Help</source>
         <translation>Допомога</translation>
     </message>
     <message>
-        <location filename="../mainwindow_moc.ui" line="58"/>
+        <location filename="../mainwindow_moc.ui" line="61"/>
         <source>Game</source>
         <translation>Гра</translation>
     </message>
     <message>
-        <location filename="../mainwindow_moc.cpp" line="46"/>
+        <location filename="../mainwindow_moc.cpp" line="52"/>
         <source>Error starting executable</source>
         <translation>Помилка запуску виконуваного файлу</translation>
     </message>
@@ -1408,14 +1772,18 @@ Bin (%n байтів):
 <context>
     <name>ModFields</name>
     <message>
-        <location filename="../modManager/modstateitemmodel_moc.cpp" line="187"/>
+        <location filename="../modManager/modstateitemmodel_moc.cpp" line="192"/>
         <source>Name</source>
         <translation>Назва</translation>
     </message>
     <message>
-        <location filename="../modManager/modstateitemmodel_moc.cpp" line="190"/>
+        <location filename="../modManager/modstateitemmodel_moc.cpp" line="195"/>
         <source>Type</source>
         <translation>Тип</translation>
+    </message>
+    <message>
+        <source>⭐</source>
+        <translation type="vanished">⭐</translation>
     </message>
 </context>
 <context>
@@ -1487,12 +1855,12 @@ Bin (%n байтів):
         <translation>Не вдалося видобути дані модифікації</translation>
     </message>
     <message>
-        <location filename="../modManager/modstatecontroller.cpp" line="251"/>
+        <location filename="../modManager/modstatecontroller.cpp" line="256"/>
         <source>Mod data was not found</source>
         <translation>Не знайдено файли даних модифікації</translation>
     </message>
     <message>
-        <location filename="../modManager/modstatecontroller.cpp" line="255"/>
+        <location filename="../modManager/modstatecontroller.cpp" line="260"/>
         <source>Mod is located in a protected directory, please remove it manually:
 </source>
         <translation>Модифікація знаходиться в захищеному каталозі, будь ласка, видаліть її вручну:
@@ -1548,7 +1916,7 @@ Bin (%n байтів):
     </message>
     <message>
         <location filename="../modManager/modstateitemmodel_moc.cpp" line="45"/>
-        <location filename="../modManager/modstateitemmodel_moc.cpp" line="60"/>
+        <location filename="../modManager/modstateitemmodel_moc.cpp" line="62"/>
         <source>Other</source>
         <translation>Інше</translation>
     </message>
@@ -1594,24 +1962,34 @@ Bin (%n байтів):
     </message>
     <message>
         <location filename="../modManager/modstateitemmodel_moc.cpp" line="54"/>
+        <source>Campaigns</source>
+        <translation>Кампанії</translation>
+    </message>
+    <message>
+        <location filename="../modManager/modstateitemmodel_moc.cpp" line="55"/>
         <source>Artifacts</source>
         <translation>Артефакти</translation>
     </message>
     <message>
-        <location filename="../modManager/modstateitemmodel_moc.cpp" line="55"/>
+        <location filename="../modManager/modstateitemmodel_moc.cpp" line="56"/>
         <source>AI</source>
         <translation>ШІ</translation>
+    </message>
+    <message>
+        <location filename="../modManager/modstateitemmodel_moc.cpp" line="57"/>
+        <source>Resources</source>
+        <translation>Ресурси</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="122"/>
+        <location filename="../main.cpp" line="124"/>
         <source>Error starting executable</source>
         <translation>Помилка запуску виконуваного файлу</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="123"/>
+        <location filename="../main.cpp" line="125"/>
         <source>Failed to start %1
 Reason: %2</source>
         <translation>Не вдалося запустити %1
@@ -1621,27 +1999,27 @@ Reason: %2</source>
 <context>
     <name>StartGameTab</name>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="597"/>
+        <location filename="../startGame/StartGameTab.ui" line="635"/>
         <source>Import from Clipboard</source>
         <translation>Імпортувати з буфера обміну</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="616"/>
+        <location filename="../startGame/StartGameTab.ui" line="654"/>
         <source>Rename Current Preset</source>
         <translation>Перейменувати профіль</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="530"/>
+        <location filename="../startGame/StartGameTab.ui" line="568"/>
         <source>Create New Preset</source>
         <translation>Створити новий профіль</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="511"/>
+        <location filename="../startGame/StartGameTab.ui" line="549"/>
         <source>Export to Clipboard</source>
         <translation>Експорт у буфер обміну</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="565"/>
+        <location filename="../startGame/StartGameTab.ui" line="603"/>
         <source>Delete Current Preset</source>
         <translation>Видалити поточний профіль</translation>
     </message>
@@ -1655,11 +2033,12 @@ Reason: %2</source>
         <location filename="../startGame/StartGameTab.ui" line="160"/>
         <location filename="../startGame/StartGameTab.ui" line="201"/>
         <location filename="../startGame/StartGameTab.ui" line="220"/>
-        <location filename="../startGame/StartGameTab.ui" line="353"/>
-        <location filename="../startGame/StartGameTab.ui" line="372"/>
-        <location filename="../startGame/StartGameTab.ui" line="413"/>
+        <location filename="../startGame/StartGameTab.ui" line="299"/>
+        <location filename="../startGame/StartGameTab.ui" line="391"/>
+        <location filename="../startGame/StartGameTab.ui" line="410"/>
         <location filename="../startGame/StartGameTab.ui" line="451"/>
-        <location filename="../startGame/StartGameTab.ui" line="470"/>
+        <location filename="../startGame/StartGameTab.ui" line="489"/>
+        <location filename="../startGame/StartGameTab.ui" line="508"/>
         <source>?</source>
         <translation>?</translation>
     </message>
@@ -1669,7 +2048,7 @@ Reason: %2</source>
         <translation>Встановити переклад</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="391"/>
+        <location filename="../startGame/StartGameTab.ui" line="429"/>
         <source>No soundtrack detected!</source>
         <translation>Саундтрек не виявлено!</translation>
     </message>
@@ -1679,37 +2058,37 @@ Reason: %2</source>
         <translation>Відсутні кампанії Клинка Армагедону!</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="293"/>
+        <location filename="../startGame/StartGameTab.ui" line="331"/>
         <source>No video files detected!</source>
         <translation>Не виявлено відео файлів!</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="432"/>
+        <location filename="../startGame/StartGameTab.ui" line="470"/>
         <source>Activate Translation</source>
         <translation>Увімкнути переклад</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="315"/>
+        <location filename="../startGame/StartGameTab.ui" line="353"/>
         <source>Import files</source>
         <translation>Імпортування файлів</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="701"/>
+        <location filename="../startGame/StartGameTab.ui" line="739"/>
         <source>Check For Updates</source>
         <translation>Перевірити оновлення</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="720"/>
+        <location filename="../startGame/StartGameTab.ui" line="758"/>
         <source>Go to Downloads Page</source>
         <translation>На сторінку завантажень</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="739"/>
+        <location filename="../startGame/StartGameTab.ui" line="777"/>
         <source>Go to Changelog Page</source>
         <translation>На сторінку історії змін</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="657"/>
+        <location filename="../startGame/StartGameTab.ui" line="695"/>
         <source>You are using the latest version</source>
         <translation>Ви вже використовуєте останню версію</translation>
     </message>
@@ -1724,22 +2103,27 @@ Reason: %2</source>
         <translation>Профіль Модифікацій</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="773"/>
+        <location filename="../startGame/StartGameTab.ui" line="280"/>
+        <source>Install HD Edition (Steam)</source>
+        <translation>Встановити HD Edition (Steam)</translation>
+    </message>
+    <message>
+        <location filename="../startGame/StartGameTab.ui" line="811"/>
         <source>Resume</source>
         <translation>Продовжити</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="834"/>
+        <location filename="../startGame/StartGameTab.ui" line="872"/>
         <source>Play</source>
         <translation>Грати</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.ui" line="801"/>
+        <location filename="../startGame/StartGameTab.ui" line="839"/>
         <source>Editor</source>
         <translation>Редактор</translation>
     </message>
     <message numerus="yes">
-        <location filename="../startGame/StartGameTab.cpp" line="184"/>
+        <location filename="../startGame/StartGameTab.cpp" line="181"/>
         <source>Update %n mods</source>
         <translation>
             <numerusform>Оновити %n модифікацію</numerusform>
@@ -1748,7 +2132,7 @@ Reason: %2</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../startGame/StartGameTab.cpp" line="188"/>
+        <location filename="../startGame/StartGameTab.cpp" line="185"/>
         <source>Heroes Chronicles:
 %n/%1 installed</source>
         <translation>
@@ -1761,52 +2145,52 @@ Reason: %2</source>
         </translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="205"/>
+        <location filename="../startGame/StartGameTab.cpp" line="210"/>
         <source>Update to %1 available</source>
         <translation>Доступно оновлення до %1</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="241"/>
+        <location filename="../startGame/StartGameTab.cpp" line="246"/>
         <source>All supported files</source>
         <translation>Усі підтримувані файли</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="242"/>
+        <location filename="../startGame/StartGameTab.cpp" line="247"/>
         <source>Maps</source>
         <translation>Мапи</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="243"/>
+        <location filename="../startGame/StartGameTab.cpp" line="248"/>
         <source>Campaigns</source>
         <translation>Кампанії</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="244"/>
+        <location filename="../startGame/StartGameTab.cpp" line="249"/>
         <source>Configs</source>
         <translation>Налаштування</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="245"/>
+        <location filename="../startGame/StartGameTab.cpp" line="250"/>
         <source>Mods</source>
         <translation>Модифікації</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="246"/>
+        <location filename="../startGame/StartGameTab.cpp" line="251"/>
         <source>Gog files</source>
         <translation>Файл GOG</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="249"/>
+        <location filename="../startGame/StartGameTab.cpp" line="254"/>
         <source>All files (*.*)</source>
         <translation>Усі файли (*.*)</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="251"/>
+        <location filename="../startGame/StartGameTab.cpp" line="256"/>
         <source>Select files (configs, mods, maps, campaigns, gog files) to install...</source>
         <translation>Виберіть файли (конфіги, моди, мапи, кампанії, gog-файли) для встановлення...</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="294"/>
+        <location filename="../startGame/StartGameTab.cpp" line="299"/>
         <source>This option allows you to import additional data files into your VCMI installation. At the moment, following options are supported:
 
  - Heroes III Maps (.h3m or .vmap).
@@ -1825,17 +2209,17 @@ Reason: %2</source>
 </translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="309"/>
+        <location filename="../startGame/StartGameTab.cpp" line="314"/>
         <source>Your Heroes III version uses different language. VCMI provides translations of the game into various languages that you can use. Use this option to automatically install such translation to your language.</source>
         <translation>Ваша версія Heroes III має іншу мову. VCMI надає переклади гри на різні мови, якими ви можете скористатися. За допомогою цієї опції ви можете автоматично інсталювати такий переклад на вашу мову.</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="319"/>
+        <location filename="../startGame/StartGameTab.cpp" line="324"/>
         <source>Translation of Heroes III into your language is installed, but has been turned off. Use this option to enable it.</source>
         <translation>Переклад Heroes III вашою мовою інстальовано, але його вимкнено. За допомогою цієї опції ви можете його увімкнути.</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="329"/>
+        <location filename="../startGame/StartGameTab.cpp" line="334"/>
         <source>A new version of some of the mods that you have installed is now available in mod repository. Use this option to automatically update all your mods to latest version.
 
 WARNING: In some cases, updated versions of mods may not be compatible with your existing saves. You may want to postpone mod update until you finish any of your ongoing games.</source>
@@ -1844,14 +2228,14 @@ WARNING: In some cases, updated versions of mods may not be compatible with your
 УВАГА: У деяких випадках оновлені версії модифікацій можуть бути несумісними з вашими існуючими збереженнями. Можливо, ви схочете відкласти оновлення модів, поки не завершите поточні ігри.</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="341"/>
+        <location filename="../startGame/StartGameTab.cpp" line="346"/>
         <source>If you own Heroes Chronicles on gog.com, you can use offline backup installers provided by gog to import Heroes Chronicles data into VCMI as custom campaigns.
 To import Heroes Chronicles, download offline backup installer of each chronicle that you wish to install, select &apos;Import files&apos; option and select downloaded file. This will generate and install mod for VCMI that contains imported chronicles</source>
         <translation>Якщо ви придбали Heroes Chronicles на gog.com, ви можете скористатися резервними копіями інсталяторів, наданими gog, щоб імпортувати дані Heroes Chronicles до VCMI як користувацькі кампанії.
 Щоб імпортувати Heroes Chronicles, завантажте резервну копію інсталятора кожної хроніки яку ви бажаєте встановити, виберіть опцію «Імпортувати файли», а потім виберіть завантажений файл. Це створить та встановить модифікацію для VCMI, яка містить імпортовану хроніку</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="354"/>
+        <location filename="../startGame/StartGameTab.cpp" line="359"/>
         <source>VCMI has detected that Heroes III music files are missing from your installation. VCMI will run, but in-game music will not be available.
 
 To resolve this problem, please copy missing mp3 files from Heroes III to VCMI data files directory manually or reinstall VCMI and re-import Heroes III data files</source>
@@ -1860,7 +2244,7 @@ To resolve this problem, please copy missing mp3 files from Heroes III to VCMI d
 Щоб усунути цю проблему, скопіюйте відсутні mp3-файли з Heroes III до теки даних VCMI вручну або переінсталюйте VCMI і повторно імпортуйте файли даних Heroes III</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="365"/>
+        <location filename="../startGame/StartGameTab.cpp" line="370"/>
         <source>VCMI has detected that Heroes III video files are missing from your installation. VCMI will run, but in-game cutscenes will not be available.
 
 To resolve this problem, please copy VIDEO.VID file from Heroes III to VCMI data files directory manually or reinstall VCMI and re-import Heroes III data files</source>
@@ -1869,7 +2253,7 @@ To resolve this problem, please copy VIDEO.VID file from Heroes III to VCMI data
 Щоб вирішити цю проблему, скопіюйте файл VIDEO.VID з Heroes III до теки з файлами даних VCMI вручну або переінсталюйте VCMI та повторно імпортуйте файли даних Heroes III</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="376"/>
+        <location filename="../startGame/StartGameTab.cpp" line="381"/>
         <source>VCMI has detected that some of Heroes III data files are missing from your installation. You may attempt to run VCMI, but game may not work as expected or crash.
 
 To resolve this problem, please reinstall game and reimport data files using supported version of Heroes III. VCMI requires Heroes III: Shadow of Death or Complete Edition to run, which you can get (for example) from gog.com</source>
@@ -1878,7 +2262,7 @@ To resolve this problem, please reinstall game and reimport data files using sup
 Щоб вирішити цю проблему, переінсталюйте гру та повторно імпортуйте файли даних, використовуючи підтримувану версію Heroes III. Для запуску VCMI потрібна Heroes III: Подих Смерті або повне видання, яке можна отримати (наприклад) з gog.com</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="387"/>
+        <location filename="../startGame/StartGameTab.cpp" line="392"/>
         <source>VCMI has detected that some of Heroes III: Armageddon&apos;s Blade data files are missing from your installation. VCMI will work, but Armageddon&apos;s Blade campaigns will not be available.
 
 To resolve this problem, please copy missing data files from Heroes III to VCMI data files directory manually or reinstall VCMI and re-import Heroes III data files</source>
@@ -1887,12 +2271,41 @@ To resolve this problem, please copy missing data files from Heroes III to VCMI 
 Щоб вирішити цю проблему, скопіюйте відсутні файли даних з Heroes III до теки з файлами даних VCMI вручну або переінсталюйте VCMI та повторно імпортуйте файли даних Heroes III</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="423"/>
+        <location filename="../startGame/StartGameTab.cpp" line="403"/>
+        <source>To improve graphics quality in VCMI, you can install files from the official Heroes III HD version on Steam.Select the Heroes HD folder from Steam.
+
+After installation, you need to set the upscaling filter to x2 or higher in order to actually see the HD graphics.</source>
+        <translation>Щоб поліпшити якість графіки в VCMI, ви можете імпортувати файли з офіційної версії Heroes III HD Edition у Steam. Виберіть папку Heroes HD у Steam.
+
+Після встановлення вам потрібно встановити фільтр масштабування на x2 або вище, щоб побачити HD-графіку.</translation>
+    </message>
+    <message>
+        <source>You can install resources from official Heroes III HD Edition (Steam) to improve graphics quality in VCMI. Choose your Heroes HD folder from Steam.
+
+After installation you also have to set an upscale factor &gt; 1 to see HD graphics.</source>
+        <translation type="vanished">Встановити HD Edition (Steam) Ви можете встановити ресурси з офіційної Heroes III HD Edition (Steam), щоб поліпшити якість графіки в VCMI. Оберіть папку Heroes HD у Steam.
+
+Після встановлення вам також потрібно встановити коефіцієнт масштабування &gt; 1, щоб побачити HD-графіку.</translation>
+    </message>
+    <message>
+        <location filename="../startGame/StartGameTab.cpp" line="442"/>
+        <location filename="../startGame/StartGameTab.cpp" line="451"/>
+        <source>Preset import failed</source>
+        <translation>Не вдалося імпортувати профіль</translation>
+    </message>
+    <message>
+        <location filename="../startGame/StartGameTab.cpp" line="442"/>
+        <location filename="../startGame/StartGameTab.cpp" line="451"/>
+        <source>Failed to import preset - data in clipboard does not looks like mod preset!</source>
+        <translation>Не вдалося імпортувати профіль — дані в буфері обміну не схожі на профіль модів!</translation>
+    </message>
+    <message>
+        <location filename="../startGame/StartGameTab.cpp" line="467"/>
         <source>Enter preset name:</source>
         <translation>Введіть назву профілю:</translation>
     </message>
     <message>
-        <location filename="../startGame/StartGameTab.cpp" line="466"/>
+        <location filename="../startGame/StartGameTab.cpp" line="510"/>
         <source>Rename preset &apos;%1&apos; to:</source>
         <translation>Перейменувати профіль &apos;%1&apos; на:</translation>
     </message>

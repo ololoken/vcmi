@@ -12,9 +12,9 @@
 
 VCMI_LIB_NAMESPACE_BEGIN
 
-NetworkConnection::NetworkConnection(INetworkConnectionListener & listener, const std::shared_ptr<NetworkSocket> & socket, const std::shared_ptr<NetworkContext> & context)
+NetworkConnection::NetworkConnection(INetworkConnectionListener & listener, const std::shared_ptr<NetworkSocket> & socket, NetworkContext & context)
 	: socket(socket)
-	, timer(std::make_shared<NetworkTimer>(*context))
+	, timer(std::make_shared<NetworkTimer>(context))
 	, listener(listener)
 {
 	//wasm throws exception on attempt to set no_delay option
@@ -216,15 +216,15 @@ void NetworkConnection::close()
 	//NOTE: ignoring error code, intended
 }
 
-InternalConnection::InternalConnection(INetworkConnectionListener & listener, const std::shared_ptr<NetworkContext> & context)
-	: listener(listener)
-	, io(context)
+InternalConnection::InternalConnection(INetworkConnectionListener & listener, NetworkContext & context)
+	: context(context)
+	, listener(listener)
 {
 }
 
 void InternalConnection::receivePacket(const std::vector<std::byte> & message)
 {
-	boost::asio::post(*io, [self = std::static_pointer_cast<InternalConnection>(shared_from_this()), message](){
+	boost::asio::post(context, [self = std::static_pointer_cast<InternalConnection>(shared_from_this()), message](){
 		if (self->connectionActive)
 			self->listener.onPacketReceived(self, message);
 	});
@@ -232,7 +232,7 @@ void InternalConnection::receivePacket(const std::vector<std::byte> & message)
 
 void InternalConnection::disconnect()
 {
-	boost::asio::post(*io, [self = std::static_pointer_cast<InternalConnection>(shared_from_this())](){
+	boost::asio::post(context, [self = std::static_pointer_cast<InternalConnection>(shared_from_this())](){
 		self->listener.onDisconnected(self, "Internal connection has been terminated");
 		self->otherSideWeak.reset();
 		self->connectionActive = false;
